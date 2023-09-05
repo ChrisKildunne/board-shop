@@ -26,6 +26,7 @@ app.use(express.json());
 //PUT API routes here, before catch all routes
 app.use('/api/users', require('./routes/api/users'))
 app.use('/api/products', require('./routes/api/products'))
+app.use('/api/orders', require('./routes/api/orders'));
 
 //The following "catch all: toure (note the *) is necessary
 //to reture the index.html on all non-AJAX/API requests
