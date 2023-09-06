@@ -1,9 +1,30 @@
-import ProductsPage from '../ProductsPage/ProductsPage';
+import {  useEffect, useState } from 'react';
+import { useParams } from "react-router-dom"
+import * as productsAPI from '../../utilities/products-api';
 
-export default function ProductDetailPage(products){
+export default function ProductDetailsPage() {
+  const { productId } = useParams();
+  const [productItem, setProductItem] = useState(null)
+
+  useEffect(() => {
+    async function getProductDetails() {
+        const product = await productsAPI.getProductById(productId);
+        setProductItem(product);
+    }
+      getProductDetails();
+  }, [productId]);
+  
 
     return (
-        <h1>{products.name}kjb</h1>
-        
+        <>
+        { productItem ? 
+        <h1>{productItem.name} Details</h1>
+            :
+            <h1>Error</h1>
+        }
+           <p>${productItem.price}</p>
+           <p>{productItem.description}</p>
+        </>
     )
-}
+  }
+
