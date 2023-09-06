@@ -1,11 +1,11 @@
 import ProductListItem from "../ProductListItem/ProductListItem";
 
-export default function ProductList({ productItems, isPaid }) {
+export default function ProductList({ productItems, isPaid, handleAddToCart }) {
     const products = productItems.map( product =>
         <ProductListItem 
         key={product._id}
         productItem={product}
-        isPaid={isPaid}
+        handleAddToCart={handleAddToCart}
         />
         );
         return (

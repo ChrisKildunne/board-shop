@@ -26,16 +26,25 @@ export default function ProductsPage({user, setUser}) {
     getCart();
   }, []);
 
-  // const productList = products.map((product) => (
-  //   <div key = {product.id}><Link to={`/product/${product.id}`}>{product.name}---${product.price}---{product.description}</Link></div>
-  // ))
+  /*---- Event Handlers ----*/
+  async function handleAddToCart(productId){
+    const updatedCart =  await  ordersAPI.addProductToCart(productId)
+    setCart(updatedCart)
+  }
+ 
+  async function handleChangeQty(productId, newQty){
+    const updatedCart =  await  ordersAPI.setProductQtyInCart(productId, newQty)
+    setCart(updatedCart)
+  }
+
+  
 
   return (
     <>
     <h1>Products:</h1>
-    <ProductList productItems={productItems} />
+    <ProductList productItems={productItems} handleAddToCart={handleAddToCart} />
     {cart !== null ? (
-        <OrderDetail order={cart} />
+        <OrderDetail order={cart} handleChangeQty={handleChangeQty} />
       ) : (
         <p>No Cart Yet</p>
       )}

@@ -4,17 +4,13 @@ import { Routes, Route } from 'react-router-dom'
 import AuthPage from '../AuthPage/AuthPage';
 import ProductsPage from '../ProductsPage/ProductsPage';
 import OrderHistoryPage from '../OrderHistoryPage/OrderHistoryPage';
+import OrderDetail from '../../components/OrderDetail/OrderDetail';
 import NavBar from '../../components/NavBar/NavBar';
 import { getUser } from '../../utilities/users-service';
 
 export default function App() {
   const [user, setUser] = useState(getUser());
 
-  // useEffect(() => {
-  //   async function getProducts(){
-  //     const product = await ProductsAPI.getAll();
-  //   }
-  // })
 
   return (
     <main className="App">
@@ -24,6 +20,7 @@ export default function App() {
       <Routes>
           <Route path="/orders/new" element={<ProductsPage />} />
           <Route path="/orders" element={ <OrderHistoryPage /> } />
+          <Route path="/orders/cart" element={ <OrderDetail /> } />
       </Routes>
       </>
     :

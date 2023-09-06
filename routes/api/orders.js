@@ -6,4 +6,6 @@ router.get('/cart', ordersCtrl.cart)
 
 router.post('/cart/products/:id',ordersCtrl.addToCart)
 
+router.put('/cart/qty',ordersCtrl.setProductQtyInCart)
+
 module.exports = router;

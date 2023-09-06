@@ -1,14 +1,12 @@
 
-export default function ProductListItem( { productItem }) {
-    const handleAddButton = () =>{
-        console.log('Qty increased:');   
-    }
+export default function ProductListItem( { productItem, handleAddToCart }) {
+
 
     return (
         <div className="ProductListItem">
             <div className="name">{productItem.name}</div>
             <div>
-                <button onClick={handleAddButton}>Add To Cart</button>
+                <button onClick={() => handleAddToCart(productItem._id)}>Add To Cart</button>
             </div>
            
         </div>

@@ -1,13 +1,13 @@
-export default function LineItem({ lineItem, isPaid }){
+export default function LineItem({ lineItem, isPaid, handleChangeQty }){
     return (
-    <>
+    <ul>
     {!isPaid &&
-        <button onClick = {() => alert('clicked')}>+</button>
+        <button onClick = {() => handleChangeQty(lineItem.product._id,lineItem.qty + 1)}>+</button>
     }
-    <span>{lineItem.qty}</span>
+    <ul>{lineItem.product.name}---{lineItem.qty}</ul>
     {!isPaid &&
-        <button onClick = {() => alert('clicked')}>-</button>
+        <button onClick = {() => handleChangeQty(lineItem.product._id,lineItem.qty - 1)}>-</button>
     }
-    </>
+    </ul>
     )
 }
