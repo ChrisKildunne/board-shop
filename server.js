@@ -27,6 +27,7 @@ app.use(express.json());
 app.use('/api/users', require('./routes/api/users'))
 app.use('/api/products', require('./routes/api/products'))
 app.use('/api/orders', require('./routes/api/orders'));
+app.use('/api/reviews', require('./routes/api/reviews'))
 
 //The following "catch all: toure (note the *) is necessary
 //to reture the index.html on all non-AJAX/API requests

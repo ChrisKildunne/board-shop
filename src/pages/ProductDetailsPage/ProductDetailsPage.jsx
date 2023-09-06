@@ -1,5 +1,6 @@
 import {  useEffect, useState } from 'react';
 import { useParams } from "react-router-dom"
+import ReviewForm from '../../components/ReviewForm/ReviewForm'
 import * as productsAPI from '../../utilities/products-api';
 
 export default function ProductDetailsPage() {
@@ -14,7 +15,6 @@ export default function ProductDetailsPage() {
       getProductDetails();
   }, [productId]);
   
-
     return (
         <>
         { productItem ? 
@@ -22,8 +22,9 @@ export default function ProductDetailsPage() {
             :
             <h1>Error</h1>
         }
-           <p>${productItem.price}</p>
-           <p>{productItem.description}</p>
+           {/* <p>${productItem.price}</p> 
+            <p>{productItem.description}</p> */}
+           <ReviewForm productId={productId} />
         </>
     )
   }
