@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import * as reviewsAPI from '../../utilities/reviews-api';
-
+//import review from "../../../models/review";
 
 export default function ReviewForm({productId}) {
   const [newReview, setNewReview] = useState(""); 
@@ -14,7 +14,7 @@ export default function ReviewForm({productId}) {
       const reviewData= await reviewsAPI.getAll(productId);
       setReviews(reviewData);
     }
-    getReviews(); 
+      getReviews(); 
   }, []);
 
   const addReview = async (reviewText) => {
@@ -23,21 +23,27 @@ export default function ReviewForm({productId}) {
     setNewReview(""); 
     setRating(0)
   }
-
   const handleAddReview = (evt) => {
     evt.preventDefault();
       addReview(newReview);
   }
-  const handleEdit = (idx) => {
-    setNewReview(reviews[idx])
-    showEdit(true)
-  }
-  const handleDelete = (idx) => {
+  const deleteReview = async (idx, reviewId, productId) => {
+    await reviewsAPI.deleteReview(productId, reviewId)
     reviews.splice(idx,1)
     setReviews([...reviews])
   }
+  const handleDelete = async (idx, reviewId, productId) => {
+    deleteReview(idx,reviewId,productId)
+  }
 
-
+  // const handleEdit = (idx) => {
+  //   setNewReview(reviews[idx].text)
+  //   setRating(reviews[idx].rating)
+  //   setShowEdit(true)
+  //   setEditIndex(idx)
+  //   reviews.splice(editIndex, 1, newReview)
+  //   setReviews([...reviews])
+  // }
   return (
     <>
       <h3>Add a Review</h3>
@@ -68,8 +74,8 @@ export default function ReviewForm({productId}) {
             <tr key={idx}>
               <td>{review.text}</td>
               <td>{review.rating}</td>
-              <td><button onClick={()=>handleEdit(idx)}>Edit</button></td>
-              <td><button onClick={()=>handleDelete(idx)}>Delete</button></td>
+              {/* <td><button onClick={()=>handleEdit(idx)}>Edit</button></td> */}
+              <td><button onClick={()=>handleDelete(idx, review._id, productId)}>Delete</button></td>
             </tr>
               ))}
             </tbody>

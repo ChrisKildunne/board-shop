@@ -22,7 +22,6 @@ async function create(req, res) {
 async function getAll(req, res) {
     try {
         const productId = req.params.productId; 
-        console.log("this is the id",productId)
         const reviews = await Review.find({ product: productId });
         res.json(reviews);
     } catch (err) {
@@ -30,8 +29,19 @@ async function getAll(req, res) {
     }
 }
 
+async function deleteReview(req,res){
+    try {
+        const productId = req.params.productId; 
+        const reviewId = req.params.reviewId
+        console.log("this is the review id",reviewId)
+        await Review.deleteOne({ _id: reviewId, product: productId})
+    }catch(err){
+        console.log(err)
+    }
+}
 
 module.exports ={
     create,
-    getAll
+    getAll,
+    deleteReview
 }

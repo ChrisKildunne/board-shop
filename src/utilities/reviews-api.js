@@ -10,3 +10,7 @@ export async function addNew(productId,reviewText, rating){
     const payload = {text : reviewText, rating: rating }
     return sendRequest(`${BASE_URL}/${productId}`, 'POST', payload)
 }
+
+export async function deleteReview(productId, reviewId){
+  return sendRequest(`${BASE_URL}/${productId}/${reviewId}`, 'DELETE')
+}
