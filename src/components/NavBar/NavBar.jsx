@@ -13,7 +13,7 @@ export default function NavBar({ user, setUser }){
     return (
         <nav>
            
-            <Link to="/orders"> Order History</Link>
+            <Link to={`/orders/${user._id}`}> Order History</Link>
             &nbsp; | &nbsp;
             <Link to="/orders/new">Products Page</Link>
             &nbsp; | &nbsp;

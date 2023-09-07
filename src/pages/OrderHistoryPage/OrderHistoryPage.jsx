@@ -1,14 +1,26 @@
-import { checkToken } from "../../utilities/users-service";
-export default function OrderHistoryPage() {
+import { useState, useEffect } from 'react'
+import * as ordersAPI from '../../utilities/orders-api'
 
-const handleCheckToken = async() =>{
-  const expDate = await checkToken()
-  console.log(expDate)
-}
+
+export default function OrderHistoryPage( {user} ) {
+  const [pastOrders, setPastOrders] = useState([])
+  useEffect(() => {
+    async function getPastOrders(){
+      setPastOrders(await ordersAPI.allPastOrders(user._id))
+      console.log(user._id)
+    }
+    getPastOrders()
+  }, [])
+
   return (
     <>
       <h1>OrderHistory</h1>
-      <button onClick={handleCheckToken}>Check When My Login Expires</button>
+      {pastOrders.map((order) => (
+        <div key={order._id}>
+          <h2>Order ID: {order.orderId}</h2>
+          <p>Order Date: {order.createdAt}</p>
+        </div>
+      ))}
     </>
   );
 }

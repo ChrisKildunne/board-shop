@@ -1,6 +1,6 @@
 import LineItem from '../LineItem/LineItem';
 
-export default function OrderDetail({ order, handleChangeQty}) {
+export default function OrderDetail({ order, handleChangeQty, handleCheckout}) {
     if (!order) return null;
   
     const lineItems = order.lineItems.map(item =>
@@ -18,6 +18,7 @@ export default function OrderDetail({ order, handleChangeQty}) {
    <span>{order.orderId}</span>
         <h2>Cart:</h2>
         {lineItems}
+        <button onClick={handleCheckout}>CHECKOUT</button>
         </>
         )
     }

@@ -56,7 +56,7 @@ orderSchema.methods.setProductQty = function (productId, newQty) {
     
     if (existingProduct) {
       if (newQty <= 0) {
-        console.log('Removing product:', existingProduct.product.name);
+       
         existingProduct.deleteOne();
       } else {
         existingProduct.qty = newQty;
