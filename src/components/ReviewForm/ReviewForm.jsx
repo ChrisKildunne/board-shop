@@ -7,6 +7,7 @@ export default function ReviewForm({productId}) {
   const [rating, setRating] = useState(0)
   const [reviews, setReviews] = useState([]); 
   const [showEdit, setShowEdit] = useState(false)
+  const [editIndex, setEditIndex] = useState(false)
 
 
   useEffect(() => {
@@ -23,10 +24,17 @@ export default function ReviewForm({productId}) {
     setNewReview(""); 
     setRating(0)
   }
+
   const handleAddReview = (evt) => {
     evt.preventDefault();
+    if (!showEdit) {
       addReview(newReview);
+    } else {
+      saveReview();
+    }
   }
+
+
   const deleteReview = async (idx, reviewId, productId) => {
     await reviewsAPI.deleteReview(productId, reviewId)
     reviews.splice(idx,1)
@@ -35,15 +43,26 @@ export default function ReviewForm({productId}) {
   const handleDelete = async (idx, reviewId, productId) => {
     deleteReview(idx,reviewId,productId)
   }
+  const editReview = (idx) => {
+    setNewReview(reviews[idx].text);
+    setRating(reviews[idx].rating);
+    setShowEdit(true);
+    setEditIndex(idx);
+  }
 
-  // const handleEdit = (idx) => {
-  //   setNewReview(reviews[idx].text)
-  //   setRating(reviews[idx].rating)
-  //   setShowEdit(true)
-  //   setEditIndex(idx)
-  //   reviews.splice(editIndex, 1, newReview)
-  //   setReviews([...reviews])
-  // }
+  const saveReview = async () => {
+      const reviewId = reviews[editIndex]._id
+      const updatedReview = await reviewsAPI.editReview(productId, reviewId, newReview, rating);
+      const updatedReviews = [...reviews];
+      updatedReviews[editIndex] = updatedReview
+      setReviews(updatedReviews)
+      setShowEdit(false);
+      setEditIndex(null)
+      setNewReview("")
+      setRating(0)
+    }
+  
+
   return (
     <>
       <h3>Add a Review</h3>
@@ -64,7 +83,7 @@ export default function ReviewForm({productId}) {
         { !showEdit ? 
         <button type="submit">Add Review</button>
         :
-        <button type="submit">Edit Review</button>
+        <button type="submit" onClick={saveReview}>Edit Review</button>
         }
       </form>
       <h3>Reviews:</h3>
@@ -74,7 +93,7 @@ export default function ReviewForm({productId}) {
             <tr key={idx}>
               <td>{review.text}</td>
               <td>{review.rating}</td>
-              {/* <td><button onClick={()=>handleEdit(idx)}>Edit</button></td> */}
+              <td><button onClick={()=>editReview(idx)}>Edit</button></td>
               <td><button onClick={()=>handleDelete(idx, review._id, productId)}>Delete</button></td>
             </tr>
               ))}

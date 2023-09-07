@@ -14,3 +14,9 @@ export async function addNew(productId,reviewText, rating){
 export async function deleteReview(productId, reviewId){
   return sendRequest(`${BASE_URL}/${productId}/${reviewId}`, 'DELETE')
 }
+
+
+export async function editReview(productId, reviewId, updatedText, updatedRating){
+  const payload = {text : updatedText, rating: updatedRating }
+  return sendRequest(`${BASE_URL}/${productId}/${reviewId}`, 'PUT', payload)
+}

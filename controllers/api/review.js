@@ -40,8 +40,24 @@ async function deleteReview(req,res){
     }
 }
 
+async function editReview(req,res){
+    try{
+        const productId = req.params.productId; 
+        const reviewId = req.params.reviewId
+        const { text, rating } = req.body;
+        const existingReview = await Review.findOne({ _id: reviewId, product: productId})
+        existingReview.text = text
+        existingReview.rating = rating
+        await existingReview.save()
+        res.json(existingReview)
+    }catch(err){
+        console.log(err)
+    }
+}
+
 module.exports ={
     create,
     getAll,
-    deleteReview
+    deleteReview,
+    editReview
 }
