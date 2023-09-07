@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import * as productsAPI from '../../utilities/products-api';
 import * as ordersAPI from '../../utilities/orders-api';
-import { Link } from "react-router-dom"
+import { Link, useLocation } from "react-router-dom"
 import ProductList from '../../components/ProductList/ProductList';
 import OrderDetail from '../../components/OrderDetail/OrderDetail';
 
@@ -41,14 +41,15 @@ export default function ProductsPage({user, setUser}) {
 
   return (
     <>
-    <h1>Products:</h1>
-    <ProductList productItems={productItems} handleAddToCart={handleAddToCart} />
-    {cart !== null ? (
+    {useLocation().pathname === '/orders/new' && (
+      <>
+        <h1>Products:</h1>
+        <ProductList productItems={productItems} handleAddToCart={handleAddToCart} />
+      </>
+    )}
+      {useLocation().pathname === '/orders/cart' && cart !== null ? (
         <OrderDetail order={cart} handleChangeQty={handleChangeQty} />
-      ) : (
-        <p>No Cart Yet</p>
-      )}
+      ) : null}
     </>
-    
   );
 }

@@ -15,17 +15,19 @@ export default function ProductDetailsPage() {
       getProductDetails();
   }, [productId]);
   
-    return (
+  return (
+    <>
+      {productItem ? (
         <>
-        { productItem ? 
-        <h1>{productItem.name} Details</h1>
-            :
-            <h1>Error</h1>
-        }
-           {/* <p>${productItem.price}</p> 
-            <p>{productItem.description}</p> */}
-           <ReviewForm productId={productId} />
+          <h1>{productItem.name} Details</h1>
+          <p>${productItem.price}</p> 
+          <p>{productItem.description}</p>
         </>
-    )
-  }
+      ) : (
+        <h1>Error</h1>
+      )}
+      <ReviewForm productId={productId} />
+    </>
+  )
+}  
 

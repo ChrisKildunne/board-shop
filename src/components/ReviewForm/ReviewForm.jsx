@@ -6,6 +6,8 @@ export default function ReviewForm({productId}) {
   const [newReview, setNewReview] = useState(""); 
   const [rating, setRating] = useState(0)
   const [reviews, setReviews] = useState([]); 
+  const [showEdit, setShowEdit] = useState(false)
+
 
   useEffect(() => {
     async function getReviews() {
@@ -22,10 +24,19 @@ export default function ReviewForm({productId}) {
     setRating(0)
   }
 
-  function handleAddReview(evt) {
+  const handleAddReview = (evt) => {
     evt.preventDefault();
       addReview(newReview);
   }
+  const handleEdit = (idx) => {
+    setNewReview(reviews[idx])
+    showEdit(true)
+  }
+  const handleDelete = (idx) => {
+    reviews.splice(idx,1)
+    setReviews([...reviews])
+  }
+
 
   return (
     <>
@@ -44,16 +55,25 @@ export default function ReviewForm({productId}) {
           <option value={4}>4</option>
           <option value={5}>5</option>
         </select>
+        { !showEdit ? 
         <button type="submit">Add Review</button>
+        :
+        <button type="submit">Edit Review</button>
+        }
       </form>
-      <div>
-        <h3>Reviews:</h3>
-        <ul>
-          {reviews.map((review, idx) => (
-            <li key={idx}>{review.text}---{review.rating}</li>
-          ))}
-        </ul>
-      </div>
+      <h3>Reviews:</h3>
+        <table>
+          <tbody>
+            {reviews.map((review, idx) => (
+            <tr key={idx}>
+              <td>{review.text}</td>
+              <td>{review.rating}</td>
+              <td><button onClick={()=>handleEdit(idx)}>Edit</button></td>
+              <td><button onClick={()=>handleDelete(idx)}>Delete</button></td>
+            </tr>
+              ))}
+            </tbody>
+        </table>
     </>
   );
 }
