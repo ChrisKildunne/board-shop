@@ -11,14 +11,14 @@ import { getUser } from '../../utilities/users-service';
 import {Elements} from '@stripe/react-stripe-js';
 import {loadStripe} from '@stripe/stripe-js';
 
-const stripePromise = loadStripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
+// const stripePromise = loadStripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
 
 export default function App() {
   const [user, setUser] = useState(getUser());
 
-  const options = {
-    clientSecret: '{{CLIENT_SECRET}}',
-  };
+  // const options = {
+  //   clientSecret: '{{CLIENT_SECRET}}',
+  // };
 
 
   return (
@@ -33,9 +33,9 @@ export default function App() {
     </Routes>
     {!user && <AuthPage setUser={setUser} />}
 
-  <Elements stripe={stripePromise} options={options}>
+  {/* <Elements stripe={stripePromise} options={options}>
       <CheckoutForm />
-   </Elements>
+   </Elements> */}
   </main>
 );
 

@@ -13,14 +13,14 @@ export default function OrderDetail({ order, handleChangeQty, handleCheckout}) {
       />
     );
     return (
-        <>
-   <h1>Order Details</h1>
-   <span>{order.orderId}</span>
-        <h2>Cart:</h2>
-        {lineItems}
-        <button onClick={handleCheckout}>CHECKOUT</button>
-        <span>{order.totalQty}---</span>
-        <span>${order.orderTotal.toFixed(2)}</span>
-        </>
+      <>
+      <h1>Order Details</h1>
+          <span>{order.orderId}</span>
+           <h2>Cart:</h2>
+           {lineItems}
+           <button onClick={handleCheckout}>CHECKOUT</button>
+           <span>{order.totalQty}---</span>
+           <span>${order.orderTotal.toFixed(2)}</span>
+      </>
         )
     }
