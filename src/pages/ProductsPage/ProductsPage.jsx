@@ -18,14 +18,14 @@ export default function ProductsPage({user, setUser}) {
       setProductItems(products);
     }
     getProducts();
-
+    if(user){
     async function getCart(){
       const cart = await ordersAPI.getCart();
       setCart(cart)
-
     }
     getCart();
-  }, []);
+  }
+  }, [user]);
 
   /*---- Event Handlers ----*/
   async function handleAddToCart(productId){
@@ -38,19 +38,19 @@ export default function ProductsPage({user, setUser}) {
     setCart(updatedCart)
   }
 
-  async function handleCheckout(){
+  async function handleCheckout(user){
     await ordersAPI.checkout()
-    navigate('/orders')
+    navigate(`/orders/${user._id}`)
   }
 
-  
+  console.log('this is the user ', user)
 
   return (
     <>
     {useLocation().pathname === '/orders/new' && (
       <>
         <h1>Products:</h1>
-        <ProductList productItems={productItems} handleAddToCart={handleAddToCart} />
+        <ProductList productItems={productItems} handleAddToCart={handleAddToCart} user={user}/>
       </>
     )}
       {useLocation().pathname === '/orders/cart' && cart !== null ? (

@@ -1,6 +1,6 @@
 import './App.css';
 import { useEffect, useState } from 'react';
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, useNavigate } from 'react-router-dom'
 import AuthPage from '../AuthPage/AuthPage';
 import ProductsPage from '../ProductsPage/ProductsPage';
 import OrderHistoryPage from '../OrderHistoryPage/OrderHistoryPage';
@@ -11,24 +11,18 @@ import { getUser } from '../../utilities/users-service';
 export default function App() {
   const [user, setUser] = useState(getUser());
 
-
   return (
-    <main className="App">
-    { user ?
-    <>
-      <NavBar user={ user } setUser={ setUser }/>
-      <Routes>
-          <Route path="/orders/new" element={<ProductsPage />} />
-          <Route path="/orders/:userId" element={ <OrderHistoryPage user={user} /> } />
-          <Route path="/product/:productId" element={<ProductDetailsPage />} />
-          <Route path="/orders/cart" element={<ProductsPage />} />
-      </Routes>
-      </>
-    :
-    <AuthPage setUser={ setUser }  />
-    }
-    </main>
-  );
-}
+  <main className="App">
+    <h1>Welcome To the Board Shop</h1>
+    <NavBar user={user} setUser={setUser} />
+    <Routes>
+      <Route path="/orders/new" element={<ProductsPage user={user} />} />
+      <Route path="/orders/:userId" element={<OrderHistoryPage user={user} />} />
+      <Route path="/product/:productId" element={<ProductDetailsPage user ={user}/>} />
+      <Route path="/orders/cart" element={<ProductsPage />} />
+    </Routes>
+    {!user && <AuthPage setUser={setUser} />}
+  </main>
+);
 
-
+}  

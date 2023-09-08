@@ -12,16 +12,20 @@ export default function NavBar({ user, setUser }){
 
     return (
         <nav>
-           
-            <Link to={`/orders/${user._id}`}> Order History</Link>
-            &nbsp; | &nbsp;
-            <Link to="/orders/new">Products Page</Link>
-            &nbsp; | &nbsp;
-            <Link to="/orders/cart">Your Cart</Link>
-            &nbsp; | &nbsp;
-            <span>Welcome, {user.name}</span>
-            &nbsp;&nbsp;<Link to="" onClick={handleLogOut}>LogOut</Link>
-
+          <Link to="/orders/new">Products Page</Link>
+          &nbsp; | &nbsp;
+          {user ? (
+            <>
+              <Link to={`/orders/${user._id}`}>Order History</Link>
+              &nbsp; | &nbsp;
+              <Link to="/orders/cart">Your Cart</Link>
+              &nbsp; | &nbsp;
+              <span>Welcome, {user.name}</span>
+              &nbsp;&nbsp;<Link to="" onClick={handleLogOut}>Log Out</Link>
+            </>
+          ) : (
+            <Link to="/auth">Log In / Sign Up</Link>
+          )}
         </nav>
-    )
-}
+      );
+}      

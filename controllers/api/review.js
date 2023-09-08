@@ -22,7 +22,7 @@ async function create(req, res) {
 async function getAll(req, res) {
     try {
         const productId = req.params.productId; 
-        const reviews = await Review.find({ product: productId });
+        const reviews = await Review.find({ product: productId }).populate('user').exec();
         res.json(reviews);
     } catch (err) {
         console.error(err);

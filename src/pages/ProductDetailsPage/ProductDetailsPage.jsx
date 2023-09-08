@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom"
 import ReviewForm from '../../components/ReviewForm/ReviewForm'
 import * as productsAPI from '../../utilities/products-api';
 
-export default function ProductDetailsPage() {
+export default function ProductDetailsPage({user}) {
   const { productId } = useParams();
   const [productItem, setProductItem] = useState(null)
 
@@ -26,7 +26,7 @@ export default function ProductDetailsPage() {
       ) : (
         <h1>Error</h1>
       )}
-      <ReviewForm productId={productId} />
+      <ReviewForm productId={productId} user ={user}/>
     </>
   )
 }  

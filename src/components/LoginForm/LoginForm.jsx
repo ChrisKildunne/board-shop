@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import * as usersService from '../../utilities/users-service';
+import ProductsPage from '../../pages/ProductsPage/ProductsPage';
 
 export default function LoginForm({ setUser }) {
   const [credentials, setCredentials] = useState({

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import * as reviewsAPI from '../../utilities/reviews-api';
 //import review from "../../../models/review";
 
-export default function ReviewForm({productId}) {
+export default function ReviewForm({productId, user}) {
   const [newReview, setNewReview] = useState(""); 
   const [rating, setRating] = useState(0)
   const [reviews, setReviews] = useState([]); 
@@ -65,27 +65,31 @@ export default function ReviewForm({productId}) {
 
   return (
     <>
-      <h3>Add a Review</h3>
-      <form onSubmit={handleAddReview}>
-        <input
-          value={newReview}
-          onChange={(evt) => setNewReview(evt.target.value)} 
-          placeholder="Add Review Here"
-        />
-        <select value={rating} onChange={(evt) => setRating(evt.target.value)}>
-          <option value={0}>0</option>
-          <option value={1}>1</option>
-          <option value={2}>2</option>
-          <option value={3}>3</option>
-          <option value={4}>4</option>
-          <option value={5}>5</option>
-        </select>
-        { !showEdit ? 
-        <button type="submit">Add Review</button>
-        :
-        <button type="submit" onClick={saveReview}>Edit Review</button>
-        }
-      </form>
+      {user && (
+        <>
+          <h3>Add a Review</h3>
+          <form onSubmit={handleAddReview}>
+            <input
+              value={newReview}
+              onChange={(evt) => setNewReview(evt.target.value)} 
+              placeholder="Add Review Here"
+            />
+            <select value={rating} onChange={(evt) => setRating(evt.target.value)}>
+              <option value={0}>0</option>
+              <option value={1}>1</option>
+              <option value={2}>2</option>
+              <option value={3}>3</option>
+              <option value={4}>4</option>
+              <option value={5}>5</option>
+            </select>
+            { !showEdit ? 
+            <button type="submit">Add Review</button>
+            :
+            <button type="submit" onClick={saveReview}>Edit Review</button>
+            }
+          </form>
+       </>
+      )}
       <h3>Reviews:</h3>
         <table>
           <tbody>
@@ -93,8 +97,13 @@ export default function ReviewForm({productId}) {
             <tr key={idx}>
               <td>{review.text}</td>
               <td>{review.rating}</td>
-              <td><button onClick={()=>editReview(idx)}>Edit</button></td>
-              <td><button onClick={()=>handleDelete(idx, review._id, productId)}>Delete</button></td>
+              <td>{ review.user.name }</td>
+                { user.name === review.user.name && (
+                  <>
+                    <td><button onClick={()=>editReview(idx)}>Edit</button></td>
+                    <td><button onClick={()=>handleDelete(idx, review._id, productId)}>Delete</button></td>
+                  </>
+                )}
             </tr>
               ))}
             </tbody>
