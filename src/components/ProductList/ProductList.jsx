@@ -1,5 +1,5 @@
 import ProductListItem from "../ProductListItem/ProductListItem";
-
+import './ProductList.css'
 export default function ProductList({ productItems, isPaid, handleAddToCart, user }) {
     const products = productItems.map( product =>
         <ProductListItem 

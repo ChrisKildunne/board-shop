@@ -6,10 +6,20 @@ import ProductsPage from '../ProductsPage/ProductsPage';
 import OrderHistoryPage from '../OrderHistoryPage/OrderHistoryPage';
 import ProductDetailsPage from '../ProductDetailsPage/ProductDetailsPage';
 import NavBar from '../../components/NavBar/NavBar';
+import CheckoutForm from '../../components/CheckoutForm/CheckoutForm';
 import { getUser } from '../../utilities/users-service';
+import {Elements} from '@stripe/react-stripe-js';
+import {loadStripe} from '@stripe/stripe-js';
+
+const stripePromise = loadStripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
 
 export default function App() {
   const [user, setUser] = useState(getUser());
+
+  const options = {
+    clientSecret: '{{CLIENT_SECRET}}',
+  };
+
 
   return (
   <main className="App">
@@ -22,6 +32,10 @@ export default function App() {
       <Route path="/orders/cart" element={<ProductsPage />} />
     </Routes>
     {!user && <AuthPage setUser={setUser} />}
+
+  <Elements stripe={stripePromise} options={options}>
+      <CheckoutForm />
+   </Elements>
   </main>
 );
 

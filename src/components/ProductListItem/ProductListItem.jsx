@@ -1,19 +1,24 @@
 import { Link } from "react-router-dom"
 import ProductDetailsPage from "../../pages/ProductDetailsPage/ProductDetailsPage";
+import './ProductListItem.css';
 
 export default function ProductListItem( { productItem, handleAddToCart, user }) {
 <ProductDetailsPage productItem={productItem} />
-console.log("user prop:", user);
 
-    return (
-        <div className="ProductListItem">
-            <div className="name"><Link to={`/product/${productItem._id}`}>{productItem.name}</Link></div>
-            <div>
-            {user && (
-                <button onClick={() => handleAddToCart(productItem._id)}>Add To Cart</button>
-                )}
+return (
+    <div className="ProductListItem">
+        <Link to={`/product/${productItem._id}`}>
+            <div className="name">
+            {productItem.name}
             </div>
-           
-        </div>
-    )
+            <span>${productItem.price}</span>
+        </Link>
+    <div>
+        {user && (
+        <button onClick={() => handleAddToCart(productItem._id)}>Add To Cart</button>
+        )}
+    </div>
+    </div>
+
+  )  
 }
