@@ -22,3 +22,20 @@ export function checkout() {
   export function allPastOrders(userId){
     return sendRequest(`${BASE_URL}/user/${userId}/orders`, 'GET')
 }
+export function createPaymentIntent() {
+    return fetch(`${BASE_URL}/createPaymentIntent`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        // Add any necessary headers here, such as authorization headers
+      },
+      // Add any request body if needed
+      // body: JSON.stringify({ /* your request body */ }),
+    }).then((response) => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response;
+    });
+  }
+  

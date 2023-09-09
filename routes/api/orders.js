@@ -13,4 +13,6 @@ router.post('/cart/checkout', ordersCtrl.checkout);
 
 router.get('/user/:userId/orders', ordersCtrl.getPastOrders);
 
+router.post('/createPaymentIntent', ordersCtrl.createPaymentIntent);
+
 module.exports = router;

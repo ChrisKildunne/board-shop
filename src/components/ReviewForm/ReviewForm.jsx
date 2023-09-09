@@ -71,6 +71,7 @@ export default function ReviewForm({productId, user}) {
           <h3>Add a Review</h3>
           <form onSubmit={handleAddReview}>
             <input
+              className="reviewInput"
               value={newReview}
               onChange={(evt) => setNewReview(evt.target.value)} 
               placeholder="Add Review Here"

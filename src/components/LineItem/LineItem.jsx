@@ -6,9 +6,9 @@ export default function LineItem({ lineItem, isPaid, handleChangeQty }) {
         {!isPaid && (
           <div className="Cart">
             <button onClick={() => handleChangeQty(lineItem.product._id, lineItem.qty - 1)}>-</button>
-            <tr>{lineItem.product.name}</tr>
-            <tr>{lineItem.qty}</tr>
-            <tr>${lineItem.product.price}</tr>
+            <span>{lineItem.product.name}</span>
+            <span>{lineItem.qty}</span>
+            <span>${lineItem.product.price}</span>
             <button onClick={() => handleChangeQty(lineItem.product._id, lineItem.qty + 1)}>+</button>
           </div>
         )}
