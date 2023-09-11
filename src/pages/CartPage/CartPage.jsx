@@ -26,7 +26,7 @@ export default function CartPage({ user }) {
   }
 
   async function handleCheckout(user) {
-    await ordersAPI.checkout();
+    //await ordersAPI.checkout();
     navigate(`/orders/checkout`)
   }
 

@@ -29,7 +29,7 @@ export default function App() {
         <Route path="/orders/:userId" element={<OrderHistoryPage user={user} />} />
         <Route path="/product/:productId" element={<ProductDetailsPage user={user} />} />
         <Route path="/orders/cart" element={<CartPage user={user} />} />
-        <Route path="/orders/checkout" element={<Elements stripe={stripePromise}><CheckoutForm /></Elements>} />
+        <Route path="/orders/checkout" element={<Elements stripe={stripePromise}><CheckoutForm user ={user}/></Elements>} />
       </Routes>
       {!user && <AuthPage setUser={setUser} />}
     

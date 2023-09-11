@@ -39,7 +39,6 @@ orderSchema.virtual('orderId').get(function () {
 
 orderSchema.methods.addItemToCart = async function(productId){
     const existingProduct = this.lineItems.find((product) => product.product._id.equals(productId));
-    
     if(existingProduct){
         existingProduct.qty += 1;
     } else {

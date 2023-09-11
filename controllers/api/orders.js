@@ -1,4 +1,5 @@
 const Order = require('../../models/order');
+const Product = require('../../models/product');
 const stripe = require('stripe')('sk_test_51No6rMEVc2xdoRcSmISZGDgn4yF6b6OB43dWI0Av8GWDtTKee9u26fIbDCaaXHDoxSZ99UG8xZE6Zw2pmyouaIQe00XpLUNAG7');
 
 async function cart(req,res){
@@ -34,16 +35,18 @@ async function getPastOrders(req,res){
 
 async function createPaymentIntent(req, res) {
     try {
-      const intent = await stripe.paymentIntents.create({
-        amount: 1000,
+        const cart = await Order.getCart(req.params.userId);
+        const totalPrice = (cart.orderTotal) * 100 ;
+        console.log(totalPrice)
+        const intent = await stripe.paymentIntents.create({
+        amount: totalPrice,
         currency: 'usd',
         confirmation_method: 'automatic', 
       });
-      console.log(intent, 'this is the intent')
       res.json({ clientSecret: intent.client_secret }); 
     } catch (error) {
-      console.error(error);
-      res.status(500).json({ error: 'Failed to create Payment Intent' });
+        console.error(error);
+        res.status(500).json({ error: 'Failed to create Payment Intent' });
     }
   }
   
