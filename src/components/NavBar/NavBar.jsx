@@ -5,23 +5,21 @@ export default function NavBar({ user, setUser }){
 
     function handleLogOut(){
         userService.logOut();
-
         setUser(null);
-
     }
 
     return (
-        <nav>
-          <Link to="/orders/new">Products Page</Link>
+        <nav  className="navbar navbar-expand-lg navbar-light bg-light">
+          <Link className="navbar-brand" to="/orders/new">Products Page</Link>
           &nbsp; | &nbsp;
           {user ? (
             <>
-              <Link to={`/orders/${user._id}`}>Order History</Link>
+              <Link className="navbar-brand" to={`/orders/${user._id}`}>Order History</Link>
               &nbsp; | &nbsp;
-              <Link to="/orders/cart">Your Cart</Link>
+              <Link className="navbar-brand" to="/orders/cart">Your Cart</Link>
               &nbsp; | &nbsp;
               <span>Welcome, {user.name}</span>
-              &nbsp;&nbsp;<Link to="" onClick={handleLogOut}>Log Out</Link>
+              &nbsp;&nbsp;<Link className="navbar-brand" to="" onClick={handleLogOut}>Log Out</Link>
             </>
           ) : (
             <Link to="/auth">Log In / Sign Up</Link>

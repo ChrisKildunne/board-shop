@@ -17,4 +17,6 @@ router.get('/user/:userId/orders', ordersCtrl.getPastOrders);
 
 router.post('/createPaymentIntent/:userId', ordersCtrl.createPaymentIntent);
 
+router.get('/user/:userId/total-price', ordersCtrl.getOrderTotal);
+
 module.exports = router;

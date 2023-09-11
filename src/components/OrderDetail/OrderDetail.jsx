@@ -14,13 +14,18 @@ export default function OrderDetail({ order, handleChangeQty, handleCheckout}) {
     );
     return (
       <>
-      <h1>Order Details</h1>
+      <h1 className= "mt-4">Order Details</h1>
           <span>{order.orderId}</span>
-           <h2>Cart:</h2>
+           <h2 className="mt-4">Cart:</h2>
            {lineItems}
-           <button onClick={handleCheckout}>CHECKOUT</button>
-           <span>{order.totalQty}---</span>
-           <span>${order.orderTotal.toFixed(2)}</span>
+           <div className="d-flex justify-content-between align-items-center mt-4">
+            <span>
+              {order.totalQty} --- ${order.orderTotal.toFixed(2)}
+            </span>
+            <button className="btn btn-primary" onClick={handleCheckout}>
+              CHECKOUT
+            </button>
+          </div>
       </>
         )
     }

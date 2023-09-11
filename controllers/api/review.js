@@ -11,8 +11,8 @@ async function create(req, res) {
             rating,
             product: req.params.productId
         });
-        console.log(review);
-        res.json(review);
+        const reviews = await Review.find({ product: req.params.productId }).populate('user').exec();
+        res.json(reviews);
     } catch (err) {
         console.error(err);
         res.status(400).json(err);
@@ -33,8 +33,9 @@ async function deleteReview(req,res){
     try {
         const productId = req.params.productId; 
         const reviewId = req.params.reviewId
-        console.log("this is the review id",reviewId)
+        const reviews = await Review.find({ product: productId }).populate('user').exec();
         await Review.deleteOne({ _id: reviewId, product: productId})
+        res.json(reviews)
     }catch(err){
         console.log(err)
     }
@@ -45,11 +46,14 @@ async function editReview(req,res){
         const productId = req.params.productId; 
         const reviewId = req.params.reviewId
         const { text, rating } = req.body;
-        const existingReview = await Review.findOne({ _id: reviewId, product: productId})
+        const existingReview = await Review.findOneAndUpdate(
+            { _id: reviewId, product: productId},
+            {text, rating}).populate('user').exec();
         existingReview.text = text
         existingReview.rating = rating
-        await existingReview.save()
-        res.json(existingReview)
+        console.log(existingReview)
+        const reviews = await Review.find({ product: productId }).populate('user').exec();
+        res.json(reviews)
     }catch(err){
         console.log(err)
     }

@@ -36,4 +36,7 @@ export function createPaymentIntent(userId) {
       return response;
     });
   }
-  
+
+  export function getTotal(userId){
+    return sendRequest(`${BASE_URL}/user/${userId}/total-price`, 'GET')
+}

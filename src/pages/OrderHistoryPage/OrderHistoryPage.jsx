@@ -13,14 +13,27 @@ export default function OrderHistoryPage( {user} ) {
   }, [])
 
   return (
-    <>
-      <h1>OrderHistory</h1>
-      {pastOrders.map((order) => (
-        <div key={order._id}>
-          <h2>Order ID: {order.orderId}</h2>
-          <p>Order Date: {order.createdAt}</p>
-        </div>
-      ))}
-    </>
+    <div className="container">
+      <h1 >Order History</h1>
+      {pastOrders
+        .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+        .map((order) => (
+          <div className="card mb-3" key={order._id}>
+            <div className="card-body">
+              <h5 className="card-title">Order ID: {order.orderId}</h5>
+              <p className="card-text">Order Total: ${order.orderTotal.toFixed(2)}</p>
+              <p className="card-text">
+                Order Date: {new Date(order.createdAt).toLocaleString()}
+              </p>
+              {order.lineItems.map((item) => (
+                <div className="card-text" key={item._id}>
+                  <p>Product Name: {item.product.name}-${item.product.price.toFixed(2)}</p>
+                  <p>Quantity: {item.qty}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+    </div>
   );
 }

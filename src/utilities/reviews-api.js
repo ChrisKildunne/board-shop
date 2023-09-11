@@ -6,8 +6,8 @@ export async function getAll(productId) {
   return sendRequest(`${BASE_URL}/${productId}`);
 }
 
-export async function addNew(productId,reviewText, rating){
-    const payload = {text : reviewText, rating: rating }
+export async function addNew(productId,reviewText, rating, reviewId){
+    const payload = {text : reviewText, rating: rating, reviewId: reviewId }
     return sendRequest(`${BASE_URL}/${productId}`, 'POST', payload)
 }
 

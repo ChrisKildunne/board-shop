@@ -10,6 +10,9 @@ import CheckoutForm from '../../components/CheckoutForm/CheckoutForm';
 import { getUser } from '../../utilities/users-service';
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.bundle.min";
+import "../../index.css";
 
 export default function App() {
   const stripePromise = loadStripe(
@@ -25,15 +28,14 @@ export default function App() {
       <h1>Welcome To the Board Shop</h1>
       <NavBar user={user} setUser={setUser} />
       <Routes>
+        <Route path="/" element={<HomePage user={user} />} />
         <Route path="/orders/new" element={<ProductsPage user={user} />} />
         <Route path="/orders/:userId" element={<OrderHistoryPage user={user} />} />
         <Route path="/product/:productId" element={<ProductDetailsPage user={user} />} />
         <Route path="/orders/cart" element={<CartPage user={user} />} />
-        <Route path="/orders/checkout" element={<Elements stripe={stripePromise}><CheckoutForm user ={user}/></Elements>} />
+        <Route path="/orders/checkout" element={<Elements stripe={stripePromise}><CheckoutForm user ={user} /></Elements>} />
+      {!user && <Route path="/auth" element={<AuthPage setUser={setUser} />} />}
       </Routes>
-      {!user && <AuthPage setUser={setUser} />}
-    
-
     </main>
   );
 }

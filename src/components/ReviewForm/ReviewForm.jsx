@@ -14,6 +14,7 @@ export default function ReviewForm({productId, user}) {
   useEffect(() => {
     async function getReviews() {
       const reviewData= await reviewsAPI.getAll(productId);
+      console.log(reviewData)
       setReviews(reviewData);
     }
       getReviews(); 
@@ -21,7 +22,7 @@ export default function ReviewForm({productId, user}) {
 
   const addReview = async (reviewText) => {
     const newReviewData = await reviewsAPI.addNew(productId, reviewText, rating);
-    setReviews([...reviews, newReviewData]);
+    setReviews(newReviewData);
     setNewReview(""); 
     setRating(0)
   }
@@ -35,7 +36,6 @@ export default function ReviewForm({productId, user}) {
     }
   }
 
-
   const deleteReview = async (idx, reviewId, productId) => {
     await reviewsAPI.deleteReview(productId, reviewId)
     reviews.splice(idx,1)
@@ -44,19 +44,21 @@ export default function ReviewForm({productId, user}) {
   const handleDelete = async (idx, reviewId, productId) => {
     deleteReview(idx,reviewId,productId)
   }
+
   const editReview = (idx) => {
     setNewReview(reviews[idx].text);
     setRating(reviews[idx].rating);
     setShowEdit(true);
     setEditIndex(idx);
+    
   }
 
   const saveReview = async () => {
       const reviewId = reviews[editIndex]._id
       const updatedReview = await reviewsAPI.editReview(productId, reviewId, newReview, rating);
-      const updatedReviews = [...reviews];
-      updatedReviews[editIndex] = updatedReview
-      setReviews(updatedReviews)
+      const reviewList = [...reviews];
+      reviewList[editIndex] = updatedReview
+      setReviews(updatedReview)
       setShowEdit(false);
       setEditIndex(null)
       setNewReview("")
@@ -70,13 +72,14 @@ export default function ReviewForm({productId, user}) {
         <>
           <h3>Add a Review</h3>
           <form onSubmit={handleAddReview}>
-            <input
-              className="reviewInput"
-              value={newReview}
-              onChange={(evt) => setNewReview(evt.target.value)} 
-              placeholder="Add Review Here"
-            />
-            <select value={rating} onChange={(evt) => setRating(evt.target.value)}>
+            <div className = "mb-3">
+              <input
+                className="reviewInput"
+                value={newReview}
+                onChange={(evt) => setNewReview(evt.target.value)} 
+                placeholder="Add Review Here"
+                />
+            <select className="form-select" value={rating} onChange={(evt) => setRating(evt.target.value)}>
               <option value={0}>0</option>
               <option value={1}>1</option>
               <option value={2}>2</option>
@@ -84,26 +87,35 @@ export default function ReviewForm({productId, user}) {
               <option value={4}>4</option>
               <option value={5}>5</option>
             </select>
+             </div>
             { !showEdit ? 
-            <button type="submit">Add Review</button>
+            <button className="btn btn-primary btn-lg" type="submit">Add Review</button>
             :
-            <button type="submit" onClick={saveReview}>Edit Review</button>
+            <button className="btn btn-primary btn-lg" type="submit" onClick={saveReview}>Edit Review</button>
             }
           </form>
        </>
       )}
       <h3>Reviews:</h3>
-        <table>
+        <table className="table table-striped">
+          <thead>
+            {/* <tr>
+              <th>Review</th>
+              <th>Rating</th>
+              <th>User</th>
+              <th>Edit/Delete</th>
+            </tr> */}
+          </thead>
           <tbody>
-            {reviews.map((review, idx) => (
+            {reviews.sort((a ,b ) => new Date(b.createdAt) - new Date(a.createdAt)).map((review, idx) => (
             <tr key={idx}>
               <td>{review.text}</td>
               <td>{review.rating}</td>
               <td>{ review.user.name }</td>
-                { user.name === review.user.name && (
+                { user && user.name === review.user.name && (
                   <>
-                    <td><button onClick={()=>editReview(idx)}>Edit</button></td>
-                    <td><button onClick={()=>handleDelete(idx, review._id, productId)}>Delete</button></td>
+                    <td><button className="btn btn-primary btn-lg" onClick={()=>editReview(idx)}>Edit</button></td>
+                    <td><button className="btn btn-danger" onClick={()=>handleDelete(idx, review._id, productId)}>Delete</button></td>
                   </>
                 )}
             </tr>

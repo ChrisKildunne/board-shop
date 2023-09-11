@@ -50,13 +50,23 @@ async function createPaymentIntent(req, res) {
     }
   }
   
-
+async function getOrderTotal(req, res){
+    try {
+        const cart = await Order.getCart(req.params.userId);
+        const totalPrice = cart.orderTotal;
+        console.log(totalPrice)
+        res.json(totalPrice)
+    }catch(error){
+        console.error(error)
+    }
+}
 module.exports = {
     cart,
     addToCart,
     setProductQtyInCart,
     checkout,
     getPastOrders,
-    createPaymentIntent
+    createPaymentIntent,
+    getOrderTotal
    
   };

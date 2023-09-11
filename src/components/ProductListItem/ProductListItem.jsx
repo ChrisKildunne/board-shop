@@ -6,16 +6,16 @@ export default function ProductListItem( { productItem, handleAddToCart, user })
 <ProductDetailsPage productItem={productItem} />
 
 return (
-    <div className="ProductListItem">
-        <Link to={`/product/${productItem._id}`}>
-            <div className="name">
-            {productItem.name}
+    <div className="card">
+        <Link to={`/product/${productItem._id}`} className="card-link">
+            <div className="card-body">
+            <h4>{productItem.name}</h4>
+            <p className="card-text">${productItem.price}</p>
             </div>
-            <span>${productItem.price}</span>
         </Link>
-    <div>
+    <div className="card-footer">
         {user && (
-        <button onClick={() => handleAddToCart(productItem._id)}>Add To Cart</button>
+        <button className="btn btn-primary btn-lg" onClick={() => handleAddToCart(productItem._id)}>Add To Cart</button>
         )}
     </div>
     </div>

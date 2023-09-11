@@ -16,18 +16,18 @@ export default function ProductDetailsPage({user}) {
   }, [productId]);
   
   return (
-    <>
+    <div className='container mt-4'>
       {productItem ? (
         <>
-          <h1>{productItem.name} Details</h1>
-          <p>${productItem.price}</p> 
+          <h1 className= "display-4">{productItem.name} Details</h1>
+          <p className='lead'>${productItem.price}</p> 
           <p>{productItem.description}</p>
         </>
       ) : (
         <h1>Error</h1>
       )}
       <ReviewForm productId={productId} user ={user}/>
-    </>
+    </div>
   )
 }  
 
