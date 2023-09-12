@@ -23,7 +23,7 @@ app.use(express.json());
  
  app.use(require('./config/checkToken'))
 
- const port = process.env.PORZTZ || 3001;
+ const port = process.env.PORT || 3001;
 
 //PUT API routes here, before catch all routes
 app.use('/api/users', require('./routes/api/users'))
