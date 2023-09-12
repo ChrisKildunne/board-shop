@@ -45,29 +45,23 @@ export default function CheckoutForm({ user }){
         console.error(' payment: error', error);
         }
     };
-    const cardElementStyle = {
-        base: {
-          fontSize: '20px',
-          fontFamily: 'Arial, sans-serif',
-          width: '100%', 
-          padding: '20px', 
-          border: '1px solid #ccc',
-          color: 'white'
-          
-        },
-      };
+
 
     return (
         <>
-        {paymentSuccess ? (
-            <p>Thank you for your purchase of ${totalPrice} </p>
-        ):(
+    {paymentSuccess ? (
+        <div className="alert alert-success mt-4">
+        Thank you for your purchase of ${totalPrice}
+        </div>
+        ) : (
+    <div className="container mt-4">
         <form onSubmit={handleSubmit}>
             <div className='card-element'>
-              <CardElement className="custom-card-element" options={{ style: cardElementStyle }} />
+            <CardElement className="form-control black-text" />
                <button className="btn btn-primary" disabled={!stripe}>Submit</button>
             </div>    
         </form>
+        </div>
         )}
         </>
      );

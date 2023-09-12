@@ -29,7 +29,7 @@ export default function LoginForm({ setUser }) {
       const user = await usersService.login(credentials);
       setUser(user);
       console.log('user', user)
-      navigate('/');
+      navigate('/orders/new');
     } catch {
       setError('Log In Failed - Try Again');
     }

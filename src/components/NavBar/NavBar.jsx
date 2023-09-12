@@ -13,8 +13,6 @@ export default function NavBar({ user, setUser }){
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
           <Link className="navbar-brand" to="/orders/new">Products Page</Link>
           &nbsp; | &nbsp;
-          <Link className="navbar-brand" to="/">Home</Link>
-          &nbsp; | &nbsp;
           {user ? (
             <>
               <Link className="navbar-brand" to={`/orders/${user._id}`}>Order History</Link>
