@@ -52,6 +52,7 @@ export default function CheckoutForm({ user }){
           width: '100%', 
           padding: '20px', 
           border: '1px solid #ccc',
+          color: 'white'
           
         },
       };
