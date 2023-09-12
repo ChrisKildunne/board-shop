@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
 import * as productsAPI from "../../utilities/products-api";
 import * as ordersAPI from "../../utilities/orders-api";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import ProductList from "../../components/ProductList/ProductList";
-import ProductDetailsPage from '../ProductDetailsPage/ProductDetailsPage';
 
 
 export default function ProductsPage({ user, setUser }) {

@@ -51,7 +51,6 @@ async function editReview(req,res){
             {text, rating}).populate('user').exec();
         existingReview.text = text
         existingReview.rating = rating
-        console.log(existingReview)
         const reviews = await Review.find({ product: productId }).populate('user').exec();
         res.json(reviews)
     }catch(err){

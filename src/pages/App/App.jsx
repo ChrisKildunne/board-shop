@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import  { useState, useEffect } from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import AuthPage from '../AuthPage/AuthPage';
 import ProductsPage from '../ProductsPage/ProductsPage';
@@ -7,6 +7,7 @@ import ProductDetailsPage from '../ProductDetailsPage/ProductDetailsPage';
 import CartPage from '../CartPage/CartPage';
 import NavBar from '../../components/NavBar/NavBar';
 import CheckoutForm from '../../components/CheckoutForm/CheckoutForm';
+import SearchBar from "../../components/SearchBar/SearchBar";
 import { getUser } from '../../utilities/users-service';
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
@@ -33,6 +34,7 @@ export default function App() {
   return (
     <main className="App">
       <NavBar user={user} setUser={setUser} />
+      <SearchBar/>
       <Routes>
         <Route path="/orders/new" element={<ProductsPage user={user} />} />
         <Route path="/orders/:userId" element={<OrderHistoryPage user={user} />} />
