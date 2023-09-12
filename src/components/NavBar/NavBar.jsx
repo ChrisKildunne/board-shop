@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import * as userService from '../../utilities/users-service'
+import './NavBar.css'
 
 export default function NavBar({ user, setUser }){
 
@@ -9,8 +10,10 @@ export default function NavBar({ user, setUser }){
     }
 
     return (
-        <nav  className="navbar navbar-expand-lg navbar-light bg-light">
+        <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
           <Link className="navbar-brand" to="/orders/new">Products Page</Link>
+          &nbsp; | &nbsp;
+          <Link className="navbar-brand" to="/">Home</Link>
           &nbsp; | &nbsp;
           {user ? (
             <>

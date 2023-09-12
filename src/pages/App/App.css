@@ -36,3 +36,18 @@
     transform: rotate(360deg);
   }
 }
+
+
+.App {
+  background-color: black; 
+  color: white; 
+  min-height: 100vh; 
+}
+
+/* App.css */
+
+/* Apply the background color to the entire app */
+body {
+  background-color: black;
+  color: white;
+}

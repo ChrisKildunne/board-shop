@@ -3,11 +3,13 @@ import * as productsAPI from "../../utilities/products-api";
 import * as ordersAPI from "../../utilities/orders-api";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import ProductList from "../../components/ProductList/ProductList";
-import OrderDetail from "../../components/OrderDetail/OrderDetail";
+import ProductDetailsPage from '../ProductDetailsPage/ProductDetailsPage';
+
 
 export default function ProductsPage({ user, setUser }) {
   const [productItems, setProductItems] = useState([]);
   const [cart, setCart] = useState(null);
+  const [addedToCart, setAddedToCart ] = useState("")
   const navigate = useNavigate();
 
   useEffect(function () {
@@ -29,11 +31,16 @@ export default function ProductsPage({ user, setUser }) {
   async function handleAddToCart(productId) {
     const updatedCart = await ordersAPI.addProductToCart(productId);
     setCart(updatedCart);
+    setAddedToCart("Added +1 to Cart")
+    setTimeout(()=>{
+      setAddedToCart("");
+    }, 2000);
   }
-
+  
   return (
     <>
       <h1>Products:</h1>
+      {addedToCart && <h1 className="added-to-cart-message">{addedToCart}</h1>}
       <ProductList productItems={productItems} handleAddToCart={handleAddToCart} user={user} />
     </>
   );

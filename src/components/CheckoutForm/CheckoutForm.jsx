@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useStripe, useElements, CardElement } from '@stripe/react-stripe-js';
 import * as ordersAPI from '../../utilities/orders-api';
-
-const CheckoutForm = ({ user }) => {
+import './CheckoutForm.css'
+  
+export default function CheckoutForm({ user }){
     const [paymentSuccess, setPaymentSuccess] = useState(false)
     const [totalPrice, setTotalPrice] = useState(null)
 
@@ -44,6 +45,16 @@ const CheckoutForm = ({ user }) => {
         console.error(' payment: error', error);
         }
     };
+    const cardElementStyle = {
+        base: {
+          fontSize: '20px',
+          fontFamily: 'Arial, sans-serif',
+          width: '100%', 
+          padding: '20px', 
+          border: '1px solid #ccc',
+          
+        },
+      };
 
     return (
         <>
@@ -51,12 +62,14 @@ const CheckoutForm = ({ user }) => {
             <p>Thank you for your purchase of ${totalPrice} </p>
         ):(
         <form onSubmit={handleSubmit}>
-        <CardElement />
-        <button disabled={!stripe}>Submit</button>
+            <div className='card-element'>
+              <CardElement className="custom-card-element" options={{ style: cardElementStyle }} />
+               <button className="btn btn-primary" disabled={!stripe}>Submit</button>
+            </div>    
         </form>
         )}
         </>
-    );
+     );
     };
 
-export default CheckoutForm;
+

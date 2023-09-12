@@ -4,6 +4,7 @@ import AuthPage from '../AuthPage/AuthPage';
 import ProductsPage from '../ProductsPage/ProductsPage';
 import OrderHistoryPage from '../OrderHistoryPage/OrderHistoryPage';
 import ProductDetailsPage from '../ProductDetailsPage/ProductDetailsPage';
+import HomePage from '../HomePage/HomePage';
 import CartPage from '../CartPage/CartPage';
 import NavBar from '../../components/NavBar/NavBar';
 import CheckoutForm from '../../components/CheckoutForm/CheckoutForm';
@@ -13,6 +14,7 @@ import { loadStripe } from '@stripe/stripe-js';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 import "../../index.css";
+import "./App.css";
 
 export default function App() {
   const stripePromise = loadStripe(
@@ -25,9 +27,9 @@ export default function App() {
 
   return (
     <main className="App">
-      <h1>Welcome To the Board Shop</h1>
       <NavBar user={user} setUser={setUser} />
       <Routes>
+
         <Route path="/" element={<HomePage user={user} />} />
         <Route path="/orders/new" element={<ProductsPage user={user} />} />
         <Route path="/orders/:userId" element={<OrderHistoryPage user={user} />} />

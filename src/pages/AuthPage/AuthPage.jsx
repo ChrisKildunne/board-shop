@@ -9,11 +9,10 @@ export default function AuthPage({setUser}) {
   }
   return (
     <main>
-      <button onClick={handleClick}>
+      <button className="btn btn-primary btn-lg" onClick={handleClick}>
         {showLogin ? "No Account? Sign Up" : "Already Have an Account? Login"}
       </button>
         {showLogin ? <LoginForm setUser={setUser} handleClick={handleClick} /> : <SignUpForm setUser={setUser} handleClick={handleClick} /> }
-      <h1>AuthPage</h1>
     </main>
   );
 }

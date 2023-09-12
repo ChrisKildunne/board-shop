@@ -5,18 +5,18 @@ const order = require('../../models/order');
 const ensureLoggedIn = require('../../config/ensureLoggedIn');
 
 
-router.get('/cart', ordersCtrl.cart)
+router.get('/cart', ensureLoggedIn, ordersCtrl.cart)
 
-router.post('/cart/products/:id',ordersCtrl.addToCart)
+router.post('/cart/products/:id', ensureLoggedIn ,ordersCtrl.addToCart)
 
-router.put('/cart/qty',ordersCtrl.setProductQtyInCart)
+router.put('/cart/qty',ensureLoggedIn, ordersCtrl.setProductQtyInCart)
 
-router.post('/cart/checkout', ordersCtrl.checkout);
+router.post('/cart/checkout',ensureLoggedIn,  ordersCtrl.checkout);
 
-router.get('/user/:userId/orders', ordersCtrl.getPastOrders);
+router.get('/user/:userId/orders',ensureLoggedIn, ordersCtrl.getPastOrders);
 
 router.post('/createPaymentIntent/:userId', ordersCtrl.createPaymentIntent);
 
-router.get('/user/:userId/total-price', ordersCtrl.getOrderTotal);
+router.get('/user/:userId/total-price', ensureLoggedIn, ordersCtrl.getOrderTotal);
 
 module.exports = router;

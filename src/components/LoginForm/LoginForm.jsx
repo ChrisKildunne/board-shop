@@ -3,6 +3,8 @@
 import { useState } from 'react';
 import * as usersService from '../../utilities/users-service';
 import ProductsPage from '../../pages/ProductsPage/ProductsPage';
+import { useNavigate } from "react-router-dom"
+
 
 export default function LoginForm({ setUser }) {
   const [credentials, setCredentials] = useState({
@@ -10,6 +12,7 @@ export default function LoginForm({ setUser }) {
     password: ''
   });
   const [error, setError] = useState('');
+  const navigate = useNavigate();
 
   function handleChange(evt) {
     setCredentials({ ...credentials, [evt.target.name]: evt.target.value });
@@ -26,6 +29,7 @@ export default function LoginForm({ setUser }) {
       const user = await usersService.login(credentials);
       setUser(user);
       console.log('user', user)
+      navigate('/');
     } catch {
       setError('Log In Failed - Try Again');
     }

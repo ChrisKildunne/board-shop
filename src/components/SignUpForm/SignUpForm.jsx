@@ -3,13 +3,15 @@ import { signUp } from "../../utilities/users-service"
 
 
 export default class SignUpForm extends Component {
-    state = {
-        name: '',
-        email:'',
-        password: '',
-        confirm: '',
-        error: ''
-    }
+  
+  state = {
+    name: '',
+    email:'',
+    password: '',
+    confirm: '',
+    error: ''
+  }
+
     
     handleSubmit = async (evt) => {
         evt.preventDefault();
@@ -19,6 +21,7 @@ export default class SignUpForm extends Component {
             delete formData.confirm;
             const user = await signUp(formData)
             this.props.setUser(user)
+            this.props.history.push(`/`);
         } catch {
             //An error occurred
             this.setState( {error: 'Sign up failed -  try again'})

@@ -22,7 +22,7 @@ export default function OrderDetail({ order, handleChangeQty, handleCheckout}) {
             <span>
               {order.totalQty} --- ${order.orderTotal.toFixed(2)}
             </span>
-            <button className="btn btn-primary" onClick={handleCheckout}>
+            <button className="btn btn-primary" onClick={handleCheckout} disabled={order.lineItems.length===0}>
               CHECKOUT
             </button>
           </div>

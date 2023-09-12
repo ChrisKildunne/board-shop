@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import * as reviewsAPI from '../../utilities/reviews-api';
 import './ReviewForm.css'
+import { FaEdit, FaTrash } from 'react-icons/fa';
 //import review from "../../../models/review";
 
 export default function ReviewForm({productId, user}) {
@@ -79,6 +80,7 @@ export default function ReviewForm({productId, user}) {
                 onChange={(evt) => setNewReview(evt.target.value)} 
                 placeholder="Add Review Here"
                 />
+              <span>Selected Rating: {rating}</span>
             <select className="form-select" value={rating} onChange={(evt) => setRating(evt.target.value)}>
               <option value={0}>0</option>
               <option value={1}>1</option>
@@ -97,31 +99,29 @@ export default function ReviewForm({productId, user}) {
        </>
       )}
       <h3>Reviews:</h3>
-        <table className="table table-striped">
-          <thead>
-            {/* <tr>
-              <th>Review</th>
-              <th>Rating</th>
-              <th>User</th>
-              <th>Edit/Delete</th>
-            </tr> */}
-          </thead>
-          <tbody>
-            {reviews.sort((a ,b ) => new Date(b.createdAt) - new Date(a.createdAt)).map((review, idx) => (
-            <tr key={idx}>
-              <td>{review.text}</td>
-              <td>{review.rating}</td>
-              <td>{ review.user.name }</td>
-                { user && user.name === review.user.name && (
-                  <>
-                    <td><button className="btn btn-primary btn-lg" onClick={()=>editReview(idx)}>Edit</button></td>
-                    <td><button className="btn btn-danger" onClick={()=>handleDelete(idx, review._id, productId)}>Delete</button></td>
-                  </>
+      <div className="card-deck">
+        {reviews
+          .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+          .map((review, idx) => (
+            <div className="card" key={idx}>
+              <div className="card-body">
+                <h5 className="card-title">{review.user.name}</h5>
+                <p className="card-text">{review.text}</p>
+                <p className="card-text">Rating: {review.rating} / 5</p>
+                {user && user.name === review.user.name && (
+                  <div className="btn-group">
+                    <button className="btn btn-primary" onClick={() => editReview(idx)}>
+                      <FaEdit /> 
+                    </button>
+                    <button className="btn btn-danger" onClick={() => handleDelete(idx, review._id, productId)}>
+                      <FaTrash /> 
+                    </button>
+                  </div>
                 )}
-            </tr>
-              ))}
-            </tbody>
-        </table>
+              </div>
+            </div>
+          ))}
+      </div>
     </>
   );
 }
