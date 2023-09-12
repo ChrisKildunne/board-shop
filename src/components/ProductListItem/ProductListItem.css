@@ -2,15 +2,16 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    margin: 0 -10px; /* Adjust for card spacing */
+    margin: 0 -10px;
   }
   
   .product-card {
-    margin: 0 10px; 
+    
+    margin: 0 10px;
     border: none;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
     text-align: center;
-    overflow: hidden; /* Ensure consistent image size */
+    overflow: hidden;
   }
   
   .product-card:hover {
@@ -24,7 +25,6 @@
   .product-img {
     height: 80px;
     width: 90px;
-
   }
   
   .product-name {
@@ -42,9 +42,9 @@
     padding: 10px;
     text-align: center;
   }
-  .product-name {
-    color: white;
-  }
+  
+  .product-name,
   .product-price {
     color: white;
   }
+  

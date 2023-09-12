@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 import AuthPage from '../AuthPage/AuthPage';
 import ProductsPage from '../ProductsPage/ProductsPage';
 import OrderHistoryPage from '../OrderHistoryPage/OrderHistoryPage';
@@ -20,6 +20,12 @@ export default function App() {
     'pk_test_51No6rMEVc2xdoRcSmeja37cmqYVHdk2tQrztDcxyFF5HkLzdC7TZYZY4LhoiLDCC3jfTxbkqcN9mDBvKJwywHMED000DnPYeKD'
   );
   const [user, setUser] = useState(getUser());
+  const navigate = useNavigate(); 
+
+  useEffect(() => {
+    
+    navigate('/orders/new'); 
+  }, []);
     const options = {
       clientSecret: '{{CLIENT_SECRET}}',
     };
