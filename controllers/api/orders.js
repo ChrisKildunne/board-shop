@@ -4,7 +4,6 @@ const stripe = require('stripe')('sk_test_51No6rMEVc2xdoRcSmISZGDgn4yF6b6OB43dWI
 
 async function cart(req,res){
     const cart = await Order.getCart(req.user._id)
-    
     res.json(cart)
 }
 async function addToCart(req,res){

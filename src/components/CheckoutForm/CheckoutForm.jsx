@@ -56,10 +56,8 @@ export default function CheckoutForm({ user }){
         ) : (
     <div className="custom-card">
         <form onSubmit={handleSubmit}>
-            <div className='form-groip'>
-
                 <CardElement />
-            </div>
+           
             <button className="btn btn-primary" disabled={!stripe}>Submit</button>
         </form>
       </div>
