@@ -54,14 +54,15 @@ export default function CheckoutForm({ user }){
         Thank you for your purchase of ${totalPrice}
         </div>
         ) : (
-    <div className="container mt-4">
+    <div className="custom-card">
         <form onSubmit={handleSubmit}>
-            <div className='card-element'>
-            <CardElement className="form-control black-text" />
-               <button className="btn btn-primary" disabled={!stripe}>Submit</button>
-            </div>    
+            <div className='form-groip'>
+
+                <CardElement />
+            </div>
+            <button className="btn btn-primary" disabled={!stripe}>Submit</button>
         </form>
-        </div>
+      </div>
         )}
         </>
      );

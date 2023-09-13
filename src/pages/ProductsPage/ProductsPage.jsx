@@ -40,7 +40,7 @@ export default function ProductsPage({ user, setUser }) {
     <>
       <h1>Welcome To the Board Shop!</h1>
       <h2>Products:</h2>
-      {addedToCart && <h1 className="added-to-cart-message">{addedToCart}</h1>}
+      {addedToCart }
       <ProductList productItems={productItems} handleAddToCart={handleAddToCart} user={user} />
     </>
   );

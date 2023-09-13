@@ -91,9 +91,9 @@ export default function ReviewForm({productId, user}) {
             </select>
              </div>
             { !showEdit ? 
-            <button className="btn btn-primary btn-lg" type="submit">Add Review</button>
+            <button className="btn btn-primary btn-lg" type="submit" disabled={newReview===""}>Add Review</button>
             :
-            <button className="btn btn-primary btn-lg" type="submit" onClick={saveReview}>Edit Review</button>
+            <button className="btn btn-primary btn-lg" type="submit" onClick={saveReview} disabled={newReview===""}>Edit Review</button>
             }
           </form>
        </>

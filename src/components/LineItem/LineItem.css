@@ -1,28 +1,20 @@
 
-.Container {
+.checkout-container {
     display: flex;
     align-items: center;
     justify-content: center;
     height: 20vh; 
   }
 
-  .Cart {
+  .checkout-cart {
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 10px;
-    margin: 10%;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     border-radius: 8px; 
-    font-family: Arial, sans-serif;
     text-align: center;  
     height: 100px;
     width: 70%;
     background-color: #fff;
     color: black;
   }
-  
-  .Cart:hover {
-    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2); 
-  }
-  
