@@ -5,7 +5,7 @@ Developed by Chris Kildunne
 
 ## Description
 
-Welcome to Board Shop, your one-stop destination for all things related to boards. Whether you're a skateboarder, surfer, or snowboarder, we've got you covered. Explore our wide range of boards and accessories to fuel your passion for riding the waves or streets.
+Welcome to Board Shop, your one-stop destination for all things related to boards. Explore our wide range of snowboard products and accessories to fuel your passion for riding snow!
 
 ## Key Features
 - A user can add products to their shopping cart
