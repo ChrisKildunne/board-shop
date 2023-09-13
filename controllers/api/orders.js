@@ -26,7 +26,6 @@ async function checkout(req,res){
 
 async function getPastOrders(req,res){
     const pastOrders = await Order.find({user: req.user._id, isPaid: true})
-    console.log(pastOrders)
     for(const order of pastOrders){
         await order.save()
     }
