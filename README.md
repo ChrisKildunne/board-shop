@@ -37,10 +37,10 @@ Welcome to Board Shop, your one-stop destination for all things related to board
 - Install stripe using npm install --save @stripe/react-stripe-js @stripe/stripe-js
 - Store API key in .env file.
 - Stripe is currently in test-mode on this application so a user must use stripes test card: 
-        - Card #: 4242 4242 4242 4242
-        - Exp Date: 12/34
-        - CVC: Any 3 digits
-        - Zip: Any 5 digits
+- Card #: 4242 4242 4242 4242
+- Exp Date: 12/34
+- CVC: Any 3 digits
+- Zip: Any 5 digits
 
 ## Getting Started
 
