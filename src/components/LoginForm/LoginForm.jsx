@@ -1,8 +1,6 @@
-// src/components/LoginForm/LoginForm.jsx
 
 import { useState } from 'react';
 import * as usersService from '../../utilities/users-service';
-import ProductsPage from '../../pages/ProductsPage/ProductsPage';
 import { useNavigate } from "react-router-dom"
 
 

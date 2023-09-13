@@ -98,30 +98,30 @@ export default function ReviewForm({productId, user}) {
           </form>
        </>
       )}
-      <h3>Reviews:</h3>
-      <div className="card-deck">
-        {reviews
-          .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
-          .map((review, idx) => (
-            <div className="card" key={idx}>
-              <div className="card-body">
-                <h5 className="card-title">{review.user.name}</h5>
-                <p className="card-text">{review.text}</p>
-                <p className="card-text">Rating: {review.rating} / 5</p>
-                {user && user.name === review.user.name && (
-                  <div className="btn-group">
-                    <button className="btn btn-primary" onClick={() => editReview(idx)}>
-                      <FaEdit /> 
-                    </button>
-                    <button className="btn btn-danger" onClick={() => handleDelete(idx, review._id, productId)}>
-                      <FaTrash /> 
-                    </button>
-                  </div>
-                )}
-              </div>
+     <h3>Reviews:</h3>
+    <div className="card-deck">
+      {reviews
+        .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+        .map((review, idx) => (
+          <div className="card" key={idx}>
+            <div className="card-body">
+              <h5 className="card-title">{review.user.name}</h5>
+              <p className="card-text">{review.text}</p>
+              <p className="card-text">Rating: {review.rating} / 5</p>
+              {user && user.name === review.user.name && (
+                <div className="btn-group">
+                  <button className="btn btn-primary" onClick={() => editReview(idx)}>
+                    <FaEdit />
+                  </button>
+                  <button className="btn btn-danger" onClick={() => handleDelete(idx, review._id, productId)}>
+                    <FaTrash />
+                  </button>
+                </div>
+              )}
             </div>
-          ))}
-      </div>
-    </>
-  );
+          </div>
+        ))}
+    </div>
+  </>
+ );
 }

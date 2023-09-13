@@ -1,5 +1,5 @@
 import  { useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom'; 
+import {  useNavigate } from 'react-router-dom'; 
 import * as productsAPI from "../../utilities/products-api";
 
 export default function SearchBar(){
@@ -23,6 +23,7 @@ export default function SearchBar(){
     const handleSearch = () => {
         const product = products.find((product) => product.name.toLowerCase().includes(searchInput.toLocaleLowerCase()))
         if(product){
+            setSearchInput("")
             navigate(`/product/${product._id}`)
         }else{
             console.log(product)
