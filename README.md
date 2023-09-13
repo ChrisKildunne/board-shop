@@ -1,7 +1,7 @@
 # Board Shop
 
-Developed by [Your Name(s)]
-[Date]
+Developed by Chris Kildunne
+
 
 ## Description
 
@@ -32,7 +32,8 @@ Welcome to Board Shop, your one-stop destination for all things related to board
 - Node.js
 - Express.js
 - MongoDB
-- Stripe (if applicable)
+- Stripe 
+- Bootstrap
 
 ## Getting Started
 
@@ -42,8 +43,9 @@ To get started with Board Shop, follow these steps:
 - [Board Shop](https://board-shop-81f8a4bd2226.herokuapp.com/)
 
 # Next Steps
--Enable an admin to create, delete and edit products from the products page
--Create a search bar so users can search for specific products
--Optimize app design for mobile users
+- Enable an admin to create, delete and edit products from the products page
+- Optimize app design for mobile users
+- Tie application into specific products on stripe side to take full advantage of stripe features i.e. emailed reciepts, refunds etc...
+- Utilized google maps api for shipping details
 
 
