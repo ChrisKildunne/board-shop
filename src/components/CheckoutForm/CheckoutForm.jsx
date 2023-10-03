@@ -4,6 +4,24 @@ import * as ordersAPI from '../../utilities/orders-api';
 import './CheckoutForm.css'
   
 export default function CheckoutForm({ user }){
+    const CARD_ELEMENT_OPTIONS = {
+        style: {
+            base: {
+                color: "#32325d",
+                fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
+                fontSmoothing: "antialiased",
+                fontSize: "16px",
+                "::placeholder": {
+                    color: "#aab7c4"
+                }
+            },
+            invalid: {
+                color: "#fa755a",
+                iconColor: "#fa755a"
+            }
+        }
+    };
+    
     const [paymentSuccess, setPaymentSuccess] = useState(false)
     const [totalPrice, setTotalPrice] = useState(null)
 
@@ -49,21 +67,24 @@ export default function CheckoutForm({ user }){
 
     return (
         <>
-    {paymentSuccess ? (
-        <div className="alert alert-success mt-4">
-        Thank you for your purchase of ${totalPrice}
-        </div>
-        ) : (
-    <div className="custom-card">
-        <form onSubmit={handleSubmit}>
-                <CardElement />
-           
-            <button className="btn btn-primary" disabled={!stripe}>Submit</button>
-        </form>
-      </div>
-        )}
+            {paymentSuccess ? (
+                <div className="alert alert-success mt-4">
+                    Thank you for your purchase of ${totalPrice}
+                </div>
+            ) : (
+                <div className="custom-card">
+                    <form onSubmit={handleSubmit}>
+                        <div className="form-group">
+                            <label>Card Information</label>
+                            <div className="form-control">
+                                <CardElement options={CARD_ELEMENT_OPTIONS} />
+                            </div>
+                        </div>
+                        <button className="btn btn-primary mt-3" disabled={!stripe}>Submit</button>
+                    </form>
+                </div>
+            )}
         </>
-     );
-    };
-
-
+    );
+    
+}
