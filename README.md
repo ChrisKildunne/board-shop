@@ -44,9 +44,13 @@ Welcome to Board Shop, your one-stop destination for all things related to snowb
 
 ## Getting Started
 
-To get started with Board Shop, follow these steps:
-- [Trello](https://trello.com/b/L84sXud6/project-4)
+Deployed App:
+- Sample user login:
+- email:user1@email.com
+- password: hello123
 - [Board Shop](https://board-shop-81f8a4bd2226.herokuapp.com/)
+Trello Board:
+- [Trello](https://trello.com/b/L84sXud6/project-4)
 
 # Next Steps
 - Enable an admin to create, delete and edit products from the products page
