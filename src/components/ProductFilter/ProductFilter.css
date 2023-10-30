@@ -1,7 +1,8 @@
 .filter-options {
     position: fixed;
-    top: 80px; 
-    width: 200px; 
+    top: 70px; 
+    left: 0;
+    width: 150px; 
     height: 100%; 
     background-color: #100909; 
     padding: 10px;
