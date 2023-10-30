@@ -1,32 +1,10 @@
-.filter-bar {
-    background-color: #f4f4f4;
+.filter-options {
+    position: fixed;
+    top: 80px; 
+    width: 200px; 
+    height: 100%; 
+    background-color: #100909; 
     padding: 10px;
-    color: black;
-    border: 1px solid #ddd;
-    border-radius: 5px;
+    overflow-y: auto; 
+    box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.2); 
   }
-  
-  .filter-bar h3 {
-    font-size: 18px;
-    margin-bottom: 10px;
-  }
-  
-  .filter-option {
-    margin-bottom: 20px;
-  }
-  
-  .filter-option h4 {
-    font-weight: bold;
-    margin-bottom: 5px;
-  }
-  
-  .filter-checkbox {
-    display: flex;
-    align-items: center;
-    margin-right: 10px;
-  }
-  
-  .filter-checkbox label {
-    margin-left: 5px;
-  }
-  

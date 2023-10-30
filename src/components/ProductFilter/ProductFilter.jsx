@@ -15,11 +15,11 @@ export default function ProductFilter({ handleFilter }) {
           <label htmlFor="0-100">$0 - $100</label>
         </div>
         <div>
-          <input
+        <input
             type="checkbox"
-            id="101-200"
-            onChange={() => handleFilter("price", "101-200")}
-          />
+             id="101-200"
+          onChange={() => handleFilter("price", "101-200")}
+        />
           <label htmlFor="101-200">$101 - $200</label>
         </div>
         <div>
@@ -46,7 +46,6 @@ export default function ProductFilter({ handleFilter }) {
           />
           <label htmlFor="400+">$400+</label>
         </div>
-      </div>
 
       <label>Category:</label>
       <div>
@@ -54,7 +53,7 @@ export default function ProductFilter({ handleFilter }) {
           type="checkbox"
           id="Snowboard"
           onChange={() => handleFilter("category", "Snowboard")}
-        />
+          />
         <label htmlFor="Snowboard">Snowboard</label>
       </div>
       <div>
@@ -62,7 +61,7 @@ export default function ProductFilter({ handleFilter }) {
           type="checkbox"
           id="Goggles"
           onChange={() => handleFilter("category", "Goggles")}
-        />
+          />
         <label htmlFor="Goggles">Goggles</label>
       </div>
       <div>
@@ -70,7 +69,7 @@ export default function ProductFilter({ handleFilter }) {
           type="checkbox"
           id="Helmet"
           onChange={() => handleFilter("category", "Helmet")}
-        />
+          />
         <label htmlFor="Helmet">Helmet</label>
       </div>
       <div>
@@ -78,7 +77,7 @@ export default function ProductFilter({ handleFilter }) {
           type="checkbox"
           id="Bindings"
           onChange={() => handleFilter("category", "Bindings")}
-        />
+          />
         <label htmlFor="Bindings">Bindings</label>
       </div>
       <div>
@@ -86,9 +85,10 @@ export default function ProductFilter({ handleFilter }) {
           type="checkbox"
           id="Boots"
           onChange={() => handleFilter("category", "Boots")}
-        />
+          />
         <label htmlFor="Boots">Boots</label>
       </div>
+          </div>
     </>
   );
 }
