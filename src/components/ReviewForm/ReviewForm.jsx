@@ -15,8 +15,9 @@ export default function ReviewForm({productId, user}) {
   useEffect(() => {
     async function getReviews() {
       const reviewData= await reviewsAPI.getAll(productId);
-      console.log(reviewData)
+      console.log(reviewData,'reviewdata')
       setReviews(reviewData);
+      
     }
       getReviews(); 
   }, []);

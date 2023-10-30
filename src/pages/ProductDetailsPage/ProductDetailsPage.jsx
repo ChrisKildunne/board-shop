@@ -11,6 +11,7 @@ export default function ProductDetailsPage({user, handleAddToCart}) {
     async function getProductDetails() {
         const product = await productsAPI.getProductById(productId);
         setProductItem(product);
+        console.log(productItem)
     }
       getProductDetails();
   }, [productId]);
