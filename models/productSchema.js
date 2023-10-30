@@ -6,6 +6,10 @@ const productSchema = new Schema({
         type: String,
         required: true,
     },
+    cat: {
+        type: String,
+        
+    },
     price: {
         type: Number,
         required: true,

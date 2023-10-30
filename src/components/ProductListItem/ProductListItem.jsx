@@ -1,12 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import ProductDetailsPage from "../../pages/ProductDetailsPage/ProductDetailsPage";
-
+import ProductFilter from "../ProductFilter/ProductFilter";
 import "./ProductListItem.css";
 
 export default function ProductListItem({ productItem, isPaid, handleAddToCart, user }) {
   <ProductDetailsPage handleAddToCart={handleAddToCart} />
     return (
+  
       <div className="product-card-row">
         <div className="bbb_deals">
           <div className="ribbon ribbon-top-right"></div>
@@ -17,7 +18,7 @@ export default function ProductListItem({ productItem, isPaid, handleAddToCart, 
               </div>
               <div className="bbb_deals_content">
                 <div className="bbb_deals_info_line d-flex flex-row justify-content-start">
-                  {/* Add product category here */}
+         
                 </div>
                 <div className="bbb_deals_info_line d-flex flex-row justify-content-start">
                 <div className="bbb_deals_item_name">{productItem.name}</div>
@@ -42,7 +43,10 @@ export default function ProductListItem({ productItem, isPaid, handleAddToCart, 
                     Add To Cart
                   </button>
                 )}
+                <Link to={`/product/${productItem._id}`} className="card-link">
+
                 <button className="details-button">Details</button>
+                </Link>
               </div>
             </div>
           </div>
