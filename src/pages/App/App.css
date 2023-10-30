@@ -1,31 +1,64 @@
-.App {
-  text-align: center;
+/* Reset default styles */
+body, h1, h2, h3, p {
+  margin: 0;
+  padding: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #111; 
+  color: #fff; 
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  font-size: 18px; 
 }
 
-.App-link {
-  color: #61dafb;
+.main-content {
+  text-align: center;
+  margin: 20px; 
+}
+
+h1, h2, h3 {
+  color: #61dafb; 
+  font-weight: bold; 
+  text-align: center;
+}
+
+a {
+  color: #61dafb; 
+  text-decoration: none;
+  transition: color 0.3s; 
+  text-align: center; 
+}
+
+a:hover {
+  color: #2674b4; 
+  text-decoration: underline;
+}
+
+button {
+  background-color: #61dafb;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+button:hover {
+  background-color: #2674b4; 
+}
+
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+  animation: App-logo-spin infinite 20s linear;
+  text-align: center; 
 }
 
 @keyframes App-logo-spin {
@@ -37,17 +70,8 @@
   }
 }
 
-
-.App {
-  background-color: black; 
-  color: white; 
-  min-height: 100vh; 
-}
-
-/* App.css */
-
-/* Apply the background color to the entire app */
-body {
-  background-color: black;
-  color: white;
+.App-header {
+  background-color: #282c34;
+  padding: 20px;
+  text-align: center; 
 }
