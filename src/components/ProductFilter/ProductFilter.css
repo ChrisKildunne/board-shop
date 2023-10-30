@@ -1,11 +1,25 @@
 .filter-options {
     position: fixed;
-    top: 70px; 
+    top: 180px;
     left: 0;
-    width: 150px; 
-    height: 100%; 
-    background-color: #100909; 
+    width: 200px;
+    height: 100%;
+    background-color: black; /* Updated background color */
+    color: #fff; /* Text color */
     padding: 10px;
-    overflow-y: auto; 
-    box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.2); 
+    overflow-y: auto;
+    box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.2);
   }
+  
+  /* Style for the labels */
+  .filter-options label {
+    display: block;
+    margin: 10px 0;
+    cursor: pointer;
+  }
+  
+  /* Style for the checkbox labels */
+  .filter-options label input[type="checkbox"] {
+    margin-right: 5px;
+  }
+  
