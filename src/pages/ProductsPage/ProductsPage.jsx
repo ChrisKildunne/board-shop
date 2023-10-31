@@ -30,6 +30,7 @@ export default function ProductsPage({ user, setUser }) {
     const updatedCart = await ordersAPI.addProductToCart(productId);
     setCart(updatedCart);
     setAddedToCart("Added +1 to Cart")
+    console.log(user)
     setTimeout(()=>{
       setAddedToCart("");
     }, 2000);
@@ -37,9 +38,13 @@ export default function ProductsPage({ user, setUser }) {
   
   return (
     <>
-      <h1>Welcome To the Board Shop!</h1>
-      <ProductList  productItems={productItems} handleAddToCart={handleAddToCart} user={user} />
-      {addedToCart }
+        <h1>Welcome To the Board Shop!</h1>
+        {!user && <h2>Please login/signup to purchase your snowboard gear.</h2>}
+        <ProductList productItems={productItems} handleAddToCart={handleAddToCart} user={user} />
+        {addedToCart}
+        
     </>
-  );
+);
+
+
 }

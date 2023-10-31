@@ -21,3 +21,8 @@ table td {
     border: 1px solid #ccc;
 }
 
+.rating {
+    color: black;
+    font-weight: bold;
+    font-size: 20px;
+}

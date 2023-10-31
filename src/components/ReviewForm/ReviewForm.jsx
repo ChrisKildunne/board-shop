@@ -81,7 +81,7 @@ export default function ReviewForm({productId, user}) {
                 onChange={(evt) => setNewReview(evt.target.value)} 
                 placeholder="Add Review Here"
                 />
-              <span>Selected Rating: {rating}</span>
+              <span className="rating">Selected Rating: {rating}</span>
             <select className="form-select" value={rating} onChange={(evt) => setRating(evt.target.value)}>
               <option value={0}>0</option>
               <option value={1}>1</option>
