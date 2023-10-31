@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { signUp } from "../../utilities/users-service";
 import { useNavigate } from "react-router-dom";
+import './SignUpForm.css'
 
 export default function SignUpForm({ setUser }) {
   const [formData, setFormData] = useState({

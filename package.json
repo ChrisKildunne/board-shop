@@ -3,9 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
     "@fortawesome/fontawesome-svg-core": "^6.4.2",
     "@fortawesome/free-solid-svg-icons": "^6.4.2",
     "@fortawesome/react-fontawesome": "^0.2.0",
+    "@mui/icons-material": "^5.14.15",
+    "@mui/material": "^5.14.15",
+    "@mui/system": "^5.14.15",
     "@stripe/react-stripe-js": "^2.2.0",
     "@stripe/stripe-js": "^2.1.4",
     "@testing-library/jest-dom": "^5.17.0",
@@ -28,6 +33,7 @@
     "serve-favicon": "^2.5.0",
     "stripe": "^13.5.0"
   },
+  
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",

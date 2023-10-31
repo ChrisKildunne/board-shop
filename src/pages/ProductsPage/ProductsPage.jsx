@@ -3,8 +3,7 @@ import * as productsAPI from "../../utilities/products-api";
 import * as ordersAPI from "../../utilities/orders-api";
 import { useNavigate } from "react-router-dom";
 import ProductList from "../../components/ProductList/ProductList";
-
-
+import { Typography, Button, Card, CardContent } from "@mui/material";
 export default function ProductsPage({ user, setUser }) {
   const [productItems, setProductItems] = useState([]);
   const [cart, setCart] = useState(null);
@@ -39,7 +38,6 @@ export default function ProductsPage({ user, setUser }) {
   return (
     <>
       <h1>Welcome To the Board Shop!</h1>
-      <h2>Products:</h2>
       {addedToCart }
       <ProductList productItems={productItems} handleAddToCart={handleAddToCart} user={user} />
     </>

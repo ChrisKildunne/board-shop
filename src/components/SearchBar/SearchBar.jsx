@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import * as productsAPI from '../../utilities/products-api';
-import './SearchBar.css'; // Import your CSS file for styling
+import './SearchBar.css'; 
 
 export default function SearchBar() {
   const [searchInput, setSearchInput] = useState('');
@@ -36,7 +36,7 @@ export default function SearchBar() {
     <div className="search-bar">
       <input
         type="text"
-        placeholder="Search here"
+        placeholder="Search for any product here!"
         onChange={handleChange}
         value={searchInput}
       />

@@ -1,36 +1,12 @@
 .filter-options {
-    position: fixed;
-    top: 180px;
-    left: 0;
-    width: 200px;
-    height: 100%;
-    background-color: #3498db; /* Updated background color */
-    color: #fff; /* Text color */
-    padding: 20px;
-    overflow-y: auto;
-    box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.2);
-    border-right: 2px solid #2674b4; /* Add a border on the right for separation */
-    transition: background-color 0.3s, box-shadow 0.3s;
+    display: flex;
+    flex-direction: column;
   }
+.filter-options label{
+    font-size: 20px;
+}
   
-  .filter-options:hover {
-    background-color: #2674b4; /* Change background color on hover */
-  }
-  
-  .filter-options label {
-    display: block;
-    margin: 15px 0; /* Increase margin for better spacing */
+  label {
     cursor: pointer;
-    font-size: 16px; /* Adjust font size */
-  }
-  
-  .filter-options label input[type="checkbox"] {
-    margin-right: 10px; /* Increase spacing between checkbox and label text */
-  }
-  
-  /* Selected checkbox styles */
-  .filter-options label input[type="checkbox"]:checked + label {
-    font-weight: bold;
-    color: #ffcc00; /* Highlight the label text when checked */
   }
   

@@ -1,41 +1,36 @@
-/* Reset default styles */
-body, h1, h2, h3, p {
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  font-family: 'Roboto', sans-serif;
-  background-color: #111; 
-  color: #fff; 
+/* body {
+  font-family: 'Your Preferred Font', Arial, sans-serif;
+  background-color: white;
+  color: black;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: 18px; 
+  font-size: 18px;
+  margin: 0;
 }
 
 .main-content {
   text-align: center;
-  margin: 20px; 
+  margin: 20px;
 }
 
 h1, h2, h3 {
-  color: #61dafb; 
-  font-weight: bold; 
+  color: #61dafb;
+  font-weight: bold;
   text-align: center;
 }
 
 a {
-  color: #61dafb; 
+  color: #61dafb;
   text-decoration: none;
-  transition: color 0.3s; 
-  text-align: center; 
+  transition: color 0.3s;
+  text-align: center;
 }
 
 a:hover {
-  color: #2674b4; 
+  color: #2674b4;
   text-decoration: underline;
 }
 
@@ -50,15 +45,14 @@ button {
 }
 
 button:hover {
-  background-color: #2674b4; 
+  background-color: #2674b4;
 }
-
 
 .App-logo {
   height: 40vmin;
   pointer-events: none;
   animation: App-logo-spin infinite 20s linear;
-  text-align: center; 
+  text-align: center;
 }
 
 @keyframes App-logo-spin {
@@ -71,7 +65,20 @@ button:hover {
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #555;
   padding: 20px;
-  text-align: center; 
+  text-align: center;
+} */
+
+h1, h2, h3 {
+  color: #0b0f10;
+  font-weight: bold;
+  text-align: center;
+  padding: 30px;
+  margin: 10px;
+}
+body {
+  /* Linear gradient from dark gray at the top to light gray at the bottom */
+  background: linear-gradient(to bottom, #333, #e5e5e5);
+  min-height: 100vh;
 }

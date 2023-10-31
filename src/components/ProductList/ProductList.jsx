@@ -5,7 +5,7 @@ import ProductFilter from "../ProductFilter/ProductFilter";
 
 export default function ProductList({ productItems, handleAddToCart, user, isPaid }) {
   const [filters, setFilters] = useState({
-    price: [], // Use an array to store selected price ranges
+    price: [], 
     brand: [],
     rating: [],
     category: [],
@@ -64,9 +64,16 @@ export default function ProductList({ productItems, handleAddToCart, user, isPai
   ));
 
   return (
-    <main className="ProductList">
-      <ProductFilter filters={filters} handleFilter={handleFilter} />
-      {products}
-    </main>
+    <div className="page-container">
+      <div className="filter-container">
+        <ProductFilter handleFilter={handleFilter} />
+      </div>
+      <div className="ProductList">
+        <div className="row">
+          {products}
+        </div>
+      </div>
+    </div>
   );
+  
 }
