@@ -4,7 +4,7 @@ import ProductDetailsPage from "../../pages/ProductDetailsPage/ProductDetailsPag
 import ProductFilter from "../ProductFilter/ProductFilter";
 import "./ProductListItem.css";
 
-export default function ProductListItem({ productItem, isPaid, handleAddToCart, user }) {
+export default function ProductListItem({  productItem, isPaid, handleAddToCart, user }) {
   return (
     <div className="col-12 col-sm-6 col-md-4 product-card-row">
     <div className="card">
@@ -13,6 +13,7 @@ export default function ProductListItem({ productItem, isPaid, handleAddToCart, 
         <div className="card-body">
           <h5 className="card-title">{productItem.name}</h5>
           <p className="card-text">${productItem.price}</p>
+       
           <div className="product-card-footer">
             {user && (
               <button

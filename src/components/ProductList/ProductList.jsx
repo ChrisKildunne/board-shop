@@ -3,7 +3,7 @@ import ProductListItem from "../ProductListItem/ProductListItem";
 import "./ProductList.css";
 import ProductFilter from "../ProductFilter/ProductFilter";
 
-export default function ProductList({ productItems, handleAddToCart, user, isPaid }) {
+export default function ProductList({ addedToCart, productItems, handleAddToCart, user, isPaid }) {
   const [filters, setFilters] = useState({
     price: [], 
     brand: [],
@@ -21,14 +21,12 @@ export default function ProductList({ productItems, handleAddToCart, user, isPai
         updatedFilters[filterType].push(value);
       }
     } else if (filterType === 'price') {
-      // Toggle the selection of price ranges
       if (updatedFilters[filterType].includes(value)) {
         updatedFilters[filterType] = updatedFilters[filterType].filter((range) => range !== value);
       } else {
         updatedFilters[filterType].push(value);
       }
     }
-    // Add a default case for unexpected filter types here if needed.
 
     setFilters(updatedFilters);
   };
@@ -60,6 +58,7 @@ export default function ProductList({ productItems, handleAddToCart, user, isPai
       productItem={product}
       handleAddToCart={handleAddToCart}
       user={user}
+      
     />
   ));
 

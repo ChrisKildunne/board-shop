@@ -38,8 +38,8 @@ export default function ProductsPage({ user, setUser }) {
   return (
     <>
       <h1>Welcome To the Board Shop!</h1>
+      <ProductList  productItems={productItems} handleAddToCart={handleAddToCart} user={user} />
       {addedToCart }
-      <ProductList productItems={productItems} handleAddToCart={handleAddToCart} user={user} />
     </>
   );
 }
