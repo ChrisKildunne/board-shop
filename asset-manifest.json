@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/vinnys-hair/static/css/main.ae198c23.css",
+    "main.js": "/vinnys-hair/static/js/main.62b1e6c8.js",
+    "index.html": "/vinnys-hair/index.html",
+    "main.ae198c23.css.map": "/vinnys-hair/static/css/main.ae198c23.css.map",
+    "main.62b1e6c8.js.map": "/vinnys-hair/static/js/main.62b1e6c8.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ae198c23.css",
+    "static/js/main.62b1e6c8.js"
+  ]
+}
