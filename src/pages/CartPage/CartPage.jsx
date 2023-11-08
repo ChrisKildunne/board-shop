@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom"
 import * as ordersAPI from "../../utilities/orders-api";
 import OrderDetail from "../../components/OrderDetail/OrderDetail";
 import NavBar from '../../components/NavBar/NavBar';
-import './CartPage'
+import './CartPage.css'
 
 export default function CartPage({ user }) {
   const [cart, setCart] = useState(null);

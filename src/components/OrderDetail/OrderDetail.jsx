@@ -1,16 +1,17 @@
 import LineItem from '../LineItem/LineItem';
-import './OrderDetail.css'; // Import your CSS file for styling
+import './OrderDetail.css'; 
 
 export default function OrderDetail({ order, handleChangeQty, handleCheckout }) {
   if (!order) return null;
 
   const lineItems = order.lineItems.map((item) => (
-    <LineItem
-      lineItem={item}
-      isPaid={order.isPaid}
-      handleChangeQty={handleChangeQty}
-      key={item._id}
-    />
+    <div className='line-item' key={item._id}>
+      <LineItem
+        lineItem={item}
+        isPaid={order.isPaid}
+        handleChangeQty={handleChangeQty}
+      />
+    </div>
   ));
 
   return (
