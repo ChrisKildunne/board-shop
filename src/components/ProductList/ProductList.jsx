@@ -33,7 +33,7 @@ export default function ProductList({ addedToCart, productItems, handleAddToCart
 
   const filteredProducts = productItems.filter((product) => {
     const { price, brand, rating, category } = filters;
-
+  
     if (price.length === 0) {
       return (
         (brand.length === 0 || brand.includes(product.brand)) &&
@@ -43,14 +43,21 @@ export default function ProductList({ addedToCart, productItems, handleAddToCart
     } else {
       // Filter products based on selected price ranges
       return price.some((selectedRange) => {
-        const [minPrice, maxPrice] = selectedRange.split('-').map(Number);
-        return product.price >= minPrice && product.price <= maxPrice;
+        if (selectedRange === "400+") {
+          return product.price >= 400;
+        } else {
+          const [minPrice, maxPrice] = selectedRange.split('-').map(Number);
+          return product.price >= minPrice && product.price <= maxPrice;
+        }
       }) &&
         (brand.length === 0 || brand.includes(product.brand)) &&
         (rating.length === 0 || rating.includes(product.rating)) &&
         (category.length === 0 || category.includes(product.cat));
     }
   });
+  
+  // ... rest of the component code
+  
 
   const products = filteredProducts.map((product) => (
     <ProductListItem

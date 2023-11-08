@@ -21,6 +21,8 @@ export default function App() {
     'pk_test_51No6rMEVc2xdoRcSmeja37cmqYVHdk2tQrztDcxyFF5HkLzdC7TZYZY4LhoiLDCC3jfTxbkqcN9mDBvKJwywHMED000DnPYeKD'
   );
   const [user, setUser] = useState(getUser());
+  const [cart, setCart] = useState(null);
+
   const navigate = useNavigate(); 
 
   useEffect(() => {
@@ -39,7 +41,7 @@ export default function App() {
         <Route path="/orders/new" element={<ProductsPage user={user} />} />
         <Route path="/orders/:userId" element={<OrderHistoryPage user={user} />} />
         <Route path="/product/:productId" element={<ProductDetailsPage user={user} />} />
-        <Route path="/orders/cart" element={<CartPage user={user} />} />
+        <Route path="/orders/cart" element={<CartPage user={user} cart={cart} setCart={setCart} />} />
         <Route path="/orders/checkout" element={<Elements stripe={stripePromise}><CheckoutForm user ={user} /></Elements>} />
       {!user && <Route path="/auth" element={<AuthPage setUser={setUser} />} />}
       </Routes>

@@ -62,8 +62,7 @@ export default function CheckoutForm({ user }){
         } catch (error) {
         console.error(' payment: error', error);
         }
-    };
-
+    }
 
     return (
         <>

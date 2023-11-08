@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom"
 import * as ordersAPI from "../../utilities/orders-api";
 import OrderDetail from "../../components/OrderDetail/OrderDetail";
+import NavBar from '../../components/NavBar/NavBar';
 import './CartPage'
 
 export default function CartPage({ user }) {
@@ -29,13 +30,15 @@ export default function CartPage({ user }) {
         navigate(`/orders/checkout`)
   }
 
-    return (
-      <div className="cart-page-container">
-        {cart ? (
-          <OrderDetail order={cart} handleChangeQty={handleChangeQty} handleCheckout={handleCheckout} />
-        ) : (
-          <p>Your cart is empty.</p>
-        )}
-      </div>
-    );
+  return (
+    <div className="cart-page-container">
+<NavBar user={user} cartItemsCount={cart && cart.items ? cart.items.length : 0} />
+      {cart ? (
+        <OrderDetail order={cart} handleChangeQty={handleChangeQty} handleCheckout={handleCheckout} />
+      ) : (
+        <p>Your cart is empty.</p>
+      )}
+    </div>
+  );
+  
   }
