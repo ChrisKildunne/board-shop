@@ -32,7 +32,6 @@ export default function CartPage({ user }) {
 
   return (
     <div className="cart-page-container">
-<NavBar user={user} cartItemsCount={cart && cart.items ? cart.items.length : 0} />
       {cart ? (
         <OrderDetail order={cart} handleChangeQty={handleChangeQty} handleCheckout={handleCheckout} />
       ) : (

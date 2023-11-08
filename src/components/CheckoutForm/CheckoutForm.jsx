@@ -81,9 +81,11 @@ export default function CheckoutForm({ user }){
                         </div>
                         <button className="btn btn-primary mt-3" disabled={!stripe}>Submit</button>
                     </form>
+                    <div className="test-mode-notice">
+                        Note: This application is in test mode. Please use the test card 4242 4242 4242 4242, expiration date 12/34.
+                    </div>
                 </div>
             )}
         </>
     );
-    
 }
